@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="de"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><style>
+
+:root {
+  --ink: #17211f;
+  --muted: #5e6b67;
+  --paper: #f6f8f5;
+  --line: #cfd8d3;
+  --green: #08785d;
+  --green-soft: #dff1e9;
+  --blue: #225f7a;
+  --blue-soft: #e1eff5;
+  --amber: #966313;
+  --amber-soft: #f7ebcf;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, rgba(8, 120, 93, .035) 1px, transparent 1px),
+    var(--paper);
+  background-size: 32px 32px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+main {
+  width: min(100% - 32px, 1040px);
+  margin: 0 auto;
+  padding: 40px 0 64px;
+}
+
+.masthead {
+  border-top: 6px solid var(--green);
+  padding: 28px 0 34px;
+}
+
+.eyebrow,
+.section-label {
+  color: var(--green);
+  font-size: .78rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+h1 {
+  max-width: 850px;
+  margin: 12px 0 14px;
+  font-size: clamp(2.2rem, 7vw, 4.6rem);
+  line-height: .98;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin: 8px 0 20px;
+  font-size: clamp(1.55rem, 4vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin: 4px 0 8px;
+  font-size: 1.08rem;
+  letter-spacing: 0;
+}
+
+p { line-height: 1.65; }
+
+.lead {
+  max-width: 690px;
+  color: var(--muted);
+  font-size: 1.12rem;
+}
+
+.statusline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  font-weight: 700;
+}
+
+.pulse {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 6px var(--amber-soft);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.facts div { padding: 18px 16px 18px 0; }
+.facts span, .facts strong { display: block; }
+.facts span { color: var(--muted); font-size: .78rem; }
+.facts strong {
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .86rem;
+}
+
+section { padding: 54px 0; border-bottom: 1px solid var(--line); }
+.plain p, .current > p { max-width: 780px; font-size: 1.08rem; }
+
+.track { position: relative; }
+.track::before {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 30px;
+  bottom: 30px;
+  width: 2px;
+  background: var(--line);
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 22px;
+  padding: 14px 0;
+}
+
+.stepmark {
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  color: white;
+  background: var(--green);
+  font-family: Consolas, "Courier New", monospace;
+  font-weight: 750;
+}
+
+.step.active .stepmark { color: var(--amber); background: var(--amber-soft); border-color: var(--amber); }
+.step.open .stepmark { color: var(--blue); background: var(--blue-soft); border-color: var(--blue); }
+.stepstate { color: var(--muted); font-size: .78rem; font-weight: 700; text-transform: uppercase; }
+.step p { margin: 0; color: var(--muted); }
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+}
+
+.checks { margin: 0; padding: 0; list-style: none; }
+.checks li { position: relative; padding: 0 0 17px 30px; line-height: 1.5; }
+.checks li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 800;
+}
+
+.evidence dl { margin: 0; }
+.evidence dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+.evidence dt { color: var(--muted); }
+.evidence dd { margin: 0; text-align: right; font-weight: 750; }
+.note { color: var(--muted); font-size: .84rem; }
+
+.callout {
+  max-width: 800px;
+  margin-top: 26px;
+  padding: 20px 22px;
+  border-left: 5px solid var(--amber);
+  background: var(--amber-soft);
+  line-height: 1.55;
+}
+
+.callout.good {
+  border-left-color: var(--green);
+  background: var(--green-soft);
+}
+
+.worklist {
+  max-width: 880px;
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.worklist details {
+  border-bottom: 1px solid var(--line);
+}
+
+.worklist summary {
+  position: relative;
+  padding: 18px 42px 18px 0;
+  cursor: pointer;
+  font-weight: 750;
+  line-height: 1.35;
+  list-style: none;
+}
+
+.worklist summary::-webkit-details-marker { display: none; }
+
+.worklist summary::after {
+  content: "+";
+  position: absolute;
+  right: 4px;
+  top: 13px;
+  color: var(--blue);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 1.45rem;
+  font-weight: 400;
+}
+
+.worklist details[open] summary::after { content: "−"; }
+.worklist details p { margin: -2px 42px 20px 0; color: var(--muted); }
+
+.issuegrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.issuegrid article {
+  min-width: 0;
+  padding: 24px;
+  background: var(--paper);
+}
+
+.issuegrid p { margin-bottom: 0; color: var(--muted); }
+
+.glossary {
+  border-top: 1px solid var(--line);
+}
+
+.glossary > div {
+  display: grid;
+  grid-template-columns: minmax(150px, .36fr) 1fr;
+  gap: 24px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.glossary span { color: var(--muted); line-height: 1.5; }
+
+.section-intro {
+  max-width: 820px;
+  color: var(--muted);
+  font-size: 1.04rem;
+}
+
+.roadmap {
+  max-width: 900px;
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.roadmap article {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.roadmap article > span {
+  color: var(--blue);
+  font-size: .78rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.roadmap h3 { margin-top: 0; }
+.roadmap p { margin: 0; color: var(--muted); }
+
+.finishbox {
+  max-width: 900px;
+  margin-top: 34px;
+  padding: 24px;
+  border: 1px solid var(--green);
+  background: var(--green-soft);
+}
+
+.finishbox h3 { margin-bottom: 16px; }
+.finishbox ul { margin: 0; padding-left: 20px; }
+.finishbox li { padding: 5px 0; line-height: 1.5; }
+
+.riskgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+.riskgrid article { border-top: 4px solid var(--blue); padding-top: 16px; }
+.riskgrid p { color: var(--muted); font-size: .94rem; }
+code { font-family: Consolas, "Courier New", monospace; font-size: .9em; }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 42px;
+  padding: 24px;
+  color: #f9fffc;
+  background: var(--ink);
+  line-height: 1.55;
+}
+
+footer time {
+  flex: 0 0 auto;
+  color: #c8d7d2;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .8rem;
+}
+
+@media (max-width: 720px) {
+  main { width: min(100% - 28px, 1040px); padding-top: 20px; }
+  .masthead { padding-top: 22px; }
+  h1 { font-size: 2.55rem; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .facts div:nth-child(odd) { border-right: 1px solid var(--line); }
+  .facts div { padding-right: 12px; }
+  .facts div:nth-child(even) { padding-left: 12px; }
+  .facts div:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--line);
+    border-right: 0;
+  }
+  section { padding: 40px 0; }
+  .split, .riskgrid, .issuegrid { grid-template-columns: 1fr; gap: 36px; }
+  .issuegrid { gap: 1px; }
+  .evidence dl div { display: block; }
+  .evidence dd { margin-top: 4px; text-align: left; }
+  .track::before { left: 19px; }
+  .step { grid-template-columns: 40px 1fr; gap: 16px; }
+  .stepmark { width: 40px; height: 40px; font-size: .8rem; }
+  .glossary > div { grid-template-columns: 1fr; gap: 5px; }
+  .roadmap article { grid-template-columns: 1fr; gap: 7px; }
+  .finishbox { padding: 20px 18px; }
+  footer {
+    display: block;
+    margin-left: -14px;
+    margin-right: -14px;
+    padding: 22px 18px;
+  }
+  footer time { display: block; margin-top: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}
+
+@media print {
+  body { background: white; }
+  main { width: 100%; padding: 0; }
+  .worklist details { break-inside: avoid; }
+  .worklist details > p { display: block; }
+}
+
+</style><title>Klärwerk-App · aktueller Strangler-Zwischenbericht</title><meta name="description" content="Ausführlich erklärter Stand des Strangler-Umbaus der Klärwerk-App vom 29.07.2026."/><link rel="icon" href="favicon.svg"/>
+</head><body><main><header class="masthead"><div class="eyebrow">Klärwerk-App · aktueller Zwischenbericht</div><h1>Was in der Nachtschicht wirklich passiert ist</h1><p class="lead">Ein ausführlicher, ehrlicher Stand des schrittweisen Strangler-Umbaus: verständlich erklärt, technisch nachweisbar und ohne die laufende Klärwerk-App zu verändern.</p><div class="statusline"><span class="pulse" aria-hidden="true"></span>Task 02 ist implementiert und grün geprüft; der unabhängige Review steht als nächstes an.</div></header><section class="facts" aria-label="Aktueller technischer Stand"><div><span>Arbeitszweig</span><strong>codex/strangler-bilanzen</strong></div><div><span>Aktueller Git-Stand</span><strong>07a1450</strong></div><div><span>Task-2-Implementierung</span><strong>a1fdf0d</strong></div><div><span>Berichtsstand</span><strong>29.07.2026, 09:38 Uhr</strong></div><div><span>Live-App verändert</span><strong>Nein</strong></div></section><section class="plain"><div class="section-label">Kurzfassung</div><h2>Die App wird nicht neu geschrieben</h2><p>Der alte Rechenkern bleibt vorerst die maßgebliche Ausgabe. Daneben entstehen kleine, klar abgegrenzte Fachmodule. Jedes neue Teilstück muss dieselben fachlich richtigen Ergebnisse liefern, geschlossene Bilanzen nachweisen und seine Datenherkunft erklären. Erst danach darf es einen alten Abschnitt ersetzen.</p><div class="callout good"><strong>Wichtig:</strong> Diese Arbeit ist Architektur- und Qualitätssicherung im Arbeitszweig. Sie wurde noch nicht in<!-- --> <code>main</code> zusammengeführt und weder auf Firebase noch auf Vercel veröffentlicht. Die bestehende Live-App wurde nicht überschrieben.</div></section><section><div class="section-label">Fortschritt</div><h2>Wo wir im freigegebenen Umbauplan stehen</h2><div class="track"><article class="step done"><div class="stepmark" aria-hidden="true">00</div><div><div class="stepstate">Abgeschlossen</div><h3>Manipulationsfeste Nachweise</h3><p>Tests, erwartete Ergebnisse, Git-Stände und Prüfberichte werden so miteinander verknüpft, dass ein Ergebnis nicht nachträglich passend gemacht werden kann.</p></div></article><article class="step done"><div class="stepmark" aria-hidden="true">01</div><div><div class="stepstate">Abgeschlossen</div><h3>Gemeinsame Transfer-Evidenz</h3><p>Physische Mess- und Quelldaten sind jetzt sauber von berechneten Nullen, nicht bewertbaren Werten und nicht anwendbaren Größen getrennt.</p></div></article><article class="step active"><div class="stepmark" aria-hidden="true">02</div><div><div class="stepstate">Implementiert, Review offen</div><h3>Dimensionsneutrale Inventare</h3><p>Wasser-, Gas- und Stoffinventare dürfen ihre echte Einheit behalten. Der jeweilige fachliche Bilanz-Eigentümer erzwingt anschließend die dort zulässige Dimension.</p></div></article><article class="step open"><div class="stepmark" aria-hidden="true">03–06</div><div><div class="stepstate">Noch offen</div><h3>Weitere Bilanztypen, Frozen-Builder und Abschluss</h3><p>Volumen-, Gas- und Energieterme, die vollständige Quellenabbildung, der breite Gesamtcheck und der endgültige HTML-Abschlussbericht folgen erst nach sauberem Task-2-Review.</p></div></article></div></section><section class="split"><div><div class="section-label">Fachlich erklärt</div><h2>Was Task 02 verändert</h2><p>Bisher behandelte der allgemeine Inventarbaustein jedes Inventar so, als müsse es Kilogramm einer Stoffkomponente sein. Das passt für CSB-, Stickstoff- oder Feststoffmasse, aber nicht für Wasser- und Gasvolumen.</p><p>Jetzt darf der allgemeine Baustein die echte Dimension tragen: zum Beispiel <code>m³ Wasser</code>, <code>m³ Normalgas</code> oder<!-- --> <code>kg Komponentenmasse</code>. Erst der jeweilige fachliche Eigentümer prüft die passende Einheit. Eine Komponentenbilanz lehnt Wasser und Gas deshalb weiterhin ausdrücklich ab.</p><p>Zusätzlich werden physische Nullwerte nicht zu erfundenen Rechennullen umetikettiert. Unbekannte Werte bleiben unbekannt. Vertauschte Quellen oder geänderte Stützquellen brechen das Eigentümersiegel, auch wenn die Zahlenwerte gleich aussehen.</p></div><div class="evidence"><div class="section-label">Frische Nachweise</div><h2>Was wirklich ausgeführt wurde</h2><dl><div><dt>RED am alten Code</dt><dd>27 bestanden, 7 gezielt fehlgeschlagen</dd></div><div><dt>GREEN am neuen Code</dt><dd>414 von 414 bestanden</dd></div><div><dt>Nachweis-Härtung</dt><dd>147 von 147 bestanden</dd></div><div><dt>Syntaxprüfung</dt><dd>erfolgreich</dd></div><div><dt>Dateigrößen</dt><dd>16 von 16 unter 1.000 Zeilen</dd></div><div><dt>Unabhängiger Task-2-Review</dt><dd>noch offen</dd></div></dl><p class="note">Der GREEN-Gesamtlauf lief auf einem frischen, abgetrennten Stand des Implementierungscommits. Die 414 Tests benötigten dort 11,52 Sekunden reine Pytest-Zeit; der gesamte Prozesslauf dauerte 13,393 Sekunden. Die 147 Nachweisprüfungen benötigten zuletzt 142,74 Sekunden.</p></div></section><section class="current"><div class="section-label">Für Programmierlaien</div><h2>Warum das so lange dauert</h2><p>Der eigentliche Codeumbau ist nur ein Teil der Arbeit. Ein großer Teil der Zeit fließt in den Nachweis, dass die Änderung echt, vollständig und nicht nur zufällig grün ist. Deshalb werden Ergebnisse nicht aus alten Berichten übernommen und ein Agent darf seine eigene Änderung nicht abschließend freigeben.</p><div class="worklist"><details><summary>1. Regeln und Bauplan lesen</summary><p>Bevor Code geändert wird, werden Projektregeln, Fachverträge und der freigegebene Umbauplan gelesen. Das verhindert spontane Sonderlösungen, die später wieder mit anderen Teilen kollidieren.</p></details><details><summary>2. Einen festen Vorher-Stand einfrieren</summary><p>Ein Git-Commit ist wie ein versiegeltes Foto des Programms. Jede Prüfung nennt genau dieses Foto. Dadurch ist später klar, welcher Code tatsächlich geprüft wurde.</p></details><details><summary>3. Erst einen absichtlich roten Test schreiben</summary><p>Der Test beschreibt die gewünschte neue Regel und muss am alten Code scheitern. So wird bewiesen, dass der Test die fehlende Funktion wirklich erkennt und nicht schon vorher zufällig grün war.</p></details><details><summary>4. Das erwartete Ergebnis vorher festlegen</summary><p>Noch vor dem offiziellen Testlauf wird festgeschrieben, wie viele Tests bestehen und wie viele aus welchem Grund scheitern sollen. Das erschwert ein nachträgliches Schönreden des Ergebnisses.</p></details><details><summary>5. Auf einer sauberen Laborbank testen</summary><p>Der offizielle Lauf findet in einem frischen, abgetrennten Arbeitsverzeichnis statt. Dort liegen keine ungespeicherten Änderungen des Agenten und keine fremden Dateien, die das Ergebnis verfälschen könnten.</p></details><details><summary>6. Die kleinste passende Änderung bauen</summary><p>Erst jetzt wird Produktionscode geändert. Danach werden alle direkten Aufrufer migriert, damit keine alte versteckte Standardannahme übrig bleibt.</p></details><details><summary>7. Den neuen Stand breit grün prüfen</summary><p>Nicht nur der neue Einzeltest läuft. Angrenzende Bilanz-, Herkunfts-, Prozess-, Größen- und Syntaxprüfungen laufen gemeinsam, weil Fehler oft erst an Modulgrenzen sichtbar werden.</p></details><details><summary>8. Einen fremden Prüfer einsetzen</summary><p>Ein frischer Agent prüft Spezifikation und Codequalität. Der Implementierer darf seine eigene Arbeit nicht als unabhängige Bestätigung abzeichnen. Bei einem Befund beginnt eine dokumentierte Fixrunde.</p></details><details><summary>9. Erst danach die nächste Aufgabe freigeben</summary><p>Ein Paket gilt nicht wegen grüner Tests als fertig. Es braucht zusätzlich einen Review ohne offene kritische, wichtige oder kleine Befunde sowie eine vollständig gebundene Nachweiskette.</p></details></div></section><section><div class="section-label">Qualität statt Flickwerk</div><h2>Was die Kontrollen bereits abgefangen haben</h2><div class="issuegrid"><article><h3>Zu große Testdatei gestoppt</h3><p>Der erste Task-2-Entwurf hängte alle neuen Angriffe einfach an und machte eine Testdatei 1.362 Zeilen lang. Der Controller stoppte den Stand vor der Beweisaufnahme. Doppelte Altprüfungen wurden ersetzt; nach der Umsetzung hat die Datei 964 Zeilen.</p></article><article><h3>Selbstbestätigendes Testorakel gefunden</h3><p>Im ersten Task-1-Review berechnete ein Test seinen Erwartungswert mit demselben Produktionshelfer, den er prüfen sollte. Ein falscher Helfer hätte damit seinen eigenen Test bestehen können. Das Orakel wurde unabhängig neu berechnet und erneut geprüft.</p></article><article><h3>Beweiskette linear neu aufgebaut</h3><p>Mehrere Voraberwartungen waren zunächst nicht sauber jeweils direkt an ihren getesteten Code gebunden. Die unveröffentlichte Historie wurde deshalb neu geordnet. Der Produktionscode blieb dabei bytegleich; ein Sicherheitszweig bewahrt den alten Verlauf.</p></article><article><h3>Handy-Link nicht sichtbar zugestellt</h3><p>Der frühere Zwischenbericht war online und erreichbar, der Link wurde aber nach der Automation nicht deutlich im Chat zugestellt. Diese aktualisierte Seite behebt den Zustellfehler und nennt ihren eigenen Stand sichtbar.</p></article></div></section><section><div class="section-label">Begriffe ohne Fachnebel</div><h2>Kleines Wörterbuch</h2><div class="glossary" role="list"><div role="listitem"><strong>Git-Commit</strong><span>Ein unveränderliches, adressierbares Foto des Projektstands.</span></div><div role="listitem"><strong>RED</strong><span>Ein neuer Test scheitert am alten Code genau wegen der noch fehlenden Regel.</span></div><div role="listitem"><strong>GREEN</strong><span>Nach der Änderung bestehen der neue Test und die angrenzenden Prüfungen.</span></div><div role="listitem"><strong>Detached Worktree</strong><span>Eine frische Kopie eines festen Commits ohne laufende Agentenänderungen.</span></div><div role="listitem"><strong>Hash</strong><span>Ein digitaler Fingerabdruck für Datei, Befehl oder Bericht.</span></div><div role="listitem"><strong>Evidenz</strong><span>Die nachvollziehbare Herkunft eines Werts: physisch gemessen oder nichtphysisch abgeleitet.</span></div><div role="listitem"><strong>Owner</strong><span>Das Fachmodul, das festlegt, welche Einheit und Basis in seiner Bilanz erlaubt ist.</span></div><div role="listitem"><strong>0/0/0-Review</strong><span>Kein kritischer, wichtiger oder kleiner Befund blieb beim unabhängigen Prüfer offen.</span></div></div></section><section><div class="section-label">Roadmap bis zum Ziel</div><h2>Was als Nächstes kommt</h2><p class="section-intro">Eine seriöse Fertig-Uhrzeit kann ich noch nicht nennen: Jeder unabhängige Review darf eine echte Fixrunde auslösen. Fest steht aber die Reihenfolge. Vom aktuellen Stand bis zum technischen Abschluss fehlen noch sieben unabhängige saubere Review-Gates: je eines für Task 02 bis 05, zwei Gesamtprüfer und ein Berichtsprüfer.</p><div class="roadmap"><article><span>Jetzt</span><div><h3>Task 02 unabhängig prüfen</h3><p>Ein frischer Prüfer attackiert Einheiten, Phasen, physische Null, Quellenwechsel, Stützquellen und Testorakel. Erst ein Review mit 0/0/0 gibt Task 03 frei.</p></div></article><article><span>Danach</span><div><h3>Task 03: Wasser- und Nassschlamm-Evidenz</h3><p>Wasser- und Nassschlammströme erhalten denselben Herkunftsvertrag. Inventare werden echte m³-Endpunkte; Stoff- und Schlammwerte dürfen dabei nicht vermischt oder erfunden werden.</p></div></article><article><span>Dann</span><div><h3>Task 04: Gas- und Energie-Evidenz</h3><p>Gas, Methan, Kohlendioxid, Strom, Wärme, Verluste und Speicherendpunkte werden mit passenden Quellen und Doppelbuchungswächtern ausgestattet.</p></div></article><article><span>Anschließend</span><div><h3>Task 05: Jede Frozen-Quelle genau einmal</h3><p>Für alle sechs eingefrorenen Referenzfälle wird aus den Rohdaten geprüft, ob jede physische Quelle genau einem Bilanzterm gehört und keine Quelle verschwindet oder doppelt verbraucht wird.</p></div></article><article><span>Abschluss</span><div><h3>Task 06: Vollprüfung und großer HTML-Bericht</h3><p>Die vollständige Testsuite, Generatoren, Frozen-Hashes, zwei unabhängige Gesamtprüfer, Berichtstests sowie Desktop-, Mobil- und file://-Prüfungen müssen grün sein.</p></div></article><article><span>Release danach</span><div><h3>Backup, Zusammenführung und Onlinegang</h3><p>Erst nach dem technischen Abschluss wird der alte Hauptstand gesichert, der Arbeitszweig lokal nach main zusammengeführt, erneut geprüft und anschließend bewusst gepusht und deployed.</p></div></article></div><div class="finishbox"><h3>Wir sind am technischen Ziel, wenn alle diese Punkte erfüllt sind</h3><ul><li>Task 02, 03, 04 und 05 besitzen jeweils einen unabhängigen Review mit 0 kritischen, 0 wichtigen und 0 kleinen Befunden.</li><li>Task 06 hat zwei frische Gesamtprüfer und einen zusätzlichen Berichtsprüfer ohne offene Befunde bestanden.</li><li>Die komplette Testsuite läuft ohne Abbruch; kein Timeout wird als Erfolg gewertet.</li><li>Wasser-, Stoff-, Schlamm-, Gas- und Energiewerte sowie alle Frozen-Referenzbytes bleiben fachlich unverändert oder jede bewusste Änderung ist ausdrücklich belegt.</li><li>Der Abschlussbericht ist offline lesbar und auf Desktop, 360-Pixel-Mobilansicht und file:// ohne Konsolenfehler, Überlauf oder kaputte Bedienung geprüft.</li><li>Arbeitsbaum und Nachweisledger sind sauber; erst danach beginnt der getrennte Backup-, Merge-, Push- und Deployment-Schritt.</li></ul></div><div class="callout"><strong>Was es dafür noch braucht:</strong> weitere ununterbrochene Arbeitszeit, die geplanten frischen Prüfer, laufende lokale Testumgebung und genügend Zeit für mögliche Fixschleifen. Für die nächsten technischen Schritte ist aktuell keine Eingabe von dir erforderlich. UAC, App-Deployment und ein Eingriff in die Live-App werden dafür nicht benötigt.</div></section><section><div class="section-label">Offen und ehrlich</div><h2>Was noch nicht als erledigt gilt</h2><div class="riskgrid"><article><h3>Task-2-Review</h3><p>Ein frischer unabhängiger Prüfer muss Spezifikation, Code, Testorakel, Grenzfälle und die 1.000-Zeilen-Regel kontrollieren. Ein neuer Befund würde eine dokumentierte Fixrunde auslösen.</p></article><article><h3>Tasks 03 bis 06</h3><p>Volumen-, Gas- und Energieevidenz, die vollständige Frozen-Quellenabbildung, globale Doppelbuchungsprüfungen und der breite Gesamtabschluss sind noch nicht fertig.</p></article><article><h3>Endgültige Prüf-Gates</h3><p>Vollsuite, Performance, Browser, Mobilansicht, <code>file://</code>, Null-Befund-Runden und der endgültige ausführliche HTML-Bericht folgen am Ende. Ein grünes Teilpaket ersetzt diese Gates nicht.</p></article><article><h3>Kein App-Release</h3><p>Es gab keinen Merge nach <code>main</code>, keinen App-Push und kein Firebase- oder Vercel-Deployment. Diese Berichtsseite läuft auf einer separaten Hosting-Oberfläche.</p></article></div></section><footer><div><strong>Nächster Schritt:</strong> unabhängiger Task-2-Review. Nur bei null offenen Befunden wird Task 03 freigegeben.</div><time dateTime="2026-07-29T09:38:00+02:00">Stand: 29.07.2026, 09:38 Uhr MESZ</time></footer></main></body></html>
