@@ -317,11 +317,12 @@
         <span class="status-dot" aria-hidden="true"></span>
         <div>
           <strong>Der große Abschlussbericht ist noch nicht fertig.</strong>
-          Die vier Punkte der letzten beiden Schlussprüfungen sind in einem
-          neuen Kandidaten korrigiert. Die erste Controller-Gegenprobe ist
-          grün; die lange, commitgenaue Abschlussprüfung und zwei neue
-          unabhängige Schlussprüfungen stehen aber noch aus. Diese Seite ist
-          deshalb weiterhin ein Zwischenstand und keine Freigabe.
+          Die vier Punkte der letzten beiden Schlussprüfungen sowie ein danach
+          gefundener Testorakel-Fehler sind im Kandidaten
+          <code>68b9a6f</code> korrigiert. Eine frische Scoped-Prüfung endete
+          mit 0/0/0. Die lange, commitgenaue Abschlussprüfung und zwei neue
+          Gesamtprüfungen stehen aber noch aus. Diese Seite ist deshalb
+          weiterhin ein Zwischenstand und keine Freigabe.
         </div>
       </div>
 
@@ -332,7 +333,7 @@
         </div>
         <div class="fact">
           <span>Aktueller Commit</span>
-          <strong>218e7d2</strong>
+          <strong>68b9a6f</strong>
         </div>
         <div class="fact">
           <span>Arbeitsbaum</span>
@@ -442,18 +443,18 @@
       <div class="grid">
         <article class="panel running">
           <span class="label">Fixwelle Runde 4</span>
-          <span class="metric">Kandidat fertig</span>
+          <span class="metric">Runde 5 fertig</span>
           <p>
-            Der Kandidat <code>218e7d2</code> schließt den koordiniert
+            Der Kandidat <code>68b9a6f</code> schließt den koordiniert
             akzeptierten Wasser-Falschwert, teilt die übergroße Testdatei und
-            bindet den Branch-Diff-Nachweis an den exakten Commitbereich. Die
-            Änderung begann mit acht echten roten Gegenbeispielen und wurde
-            anschließend grün implementiert.
+            bindet den Branch-Diff-Nachweis an den exakten Commitbereich. Ein
+            danach entdecktes zirkuläres Testorakel wurde ebenfalls mit eigener
+            testseitiger Basisbindung beseitigt.
           </p>
         </article>
         <article class="panel running">
           <span class="label">Controller-Abnahme</span>
-          <span class="metric">96 Tests grün</span>
+          <span class="metric">205 Tests grün</span>
           <p>
             Die zuvor akzeptierten <code>8331 m3</code> werden nun gegenüber
             den fachlich richtigen <code>8208 m3</code> zurückgewiesen. Alle
@@ -463,14 +464,14 @@
           </p>
         </article>
         <article class="panel running">
-          <span class="label">Frische Diff-Prüfung</span>
-          <span class="metric">läuft</span>
+          <span class="label">Frische Scoped-Prüfung</span>
+          <span class="metric">0 / 0 / 0</span>
           <p>
-            Ein neuer, nicht an der Korrektur beteiligter Prüfer versucht
-            gerade, den Source-to-Term-Vertrag, Einheiten, Status,
-            Intervallfaktoren, Nullwerte und den Git-Nachweis erneut zu
-            brechen. Erst nach seiner Freigabe wird die lange formale
-            Testkette gestartet.
+            Ein neuer, nicht an der Korrektur beteiligter Prüfer fand keinen
+            kritischen, wichtigen oder kleinen Befund. Er bestätigte 361
+            Fokusprüfungen, 672 Feldmutationen, sechs
+            Herkunftsvertauschungen sowie die unabhängige Git-Basisbindung.
+            Damit darf die lange formale Testkette jetzt beginnen.
           </p>
         </article>
         <article class="panel open">
@@ -492,9 +493,10 @@
         sich, daher bleiben vier unterschiedliche wichtige Punkte. Der
         Wasser-Falschwert <code>8331 m3</code> statt <code>8208 m3</code>
         wurde vom Controller unabhängig reproduziert und wird vom neuen
-        Kandidaten nun abgewiesen. Diese erste Gegenprobe ersetzt noch nicht
-        die Vollsuite und zwei neue Null-Befund-Prüfungen. Der Fehler betraf
-        die neue Kontrollschicht, nicht nachweislich die aktuelle Live-Ausgabe.
+        Kandidaten nun abgewiesen. Die anschließende Scoped-Prüfung ist 0/0/0,
+        ersetzt aber noch nicht die Vollsuite und zwei neue vollständige
+        Null-Befund-Prüfungen. Der Fehler betraf die neue Kontrollschicht,
+        nicht nachweislich die aktuelle Live-Ausgabe.
       </div>
     </section>
 
@@ -600,8 +602,8 @@
       <h2>Die nächsten Schritte bis zum Ziel</h2>
       <ol class="checklist">
         <li>
-          Die laufende unabhängige Diff-Prüfung abschließen. Jeder neue
-          reproduzierbare Befund führt wieder über roten Test und Korrektur.
+          Die erwarteten Ergebnisse vorab an den exakten Kandidaten binden,
+          damit nachträglich kein bequemeres Ergebnis eingetragen werden kann.
         </li>
         <li>
           Den neuen Kandidaten in einem sauberen, abgetrennten Arbeitsverzeichnis
@@ -637,10 +639,10 @@
       <div class="callout warning">
         <strong>Wann sind wir am Ziel?</strong> Im fundfreien Fall sind noch
         mehrere lange Prüf- und Berichtsblöcke nötig; realistisch sind weitere
-        Stunden, nicht Minuten. Die Fixwelle selbst ist fertig, doch die
-        vollständigen Gates auf exakt dem neuen Kandidaten und anschließend
-        beide Schlussprüfungen müssen von vorn beginnen. Ein weiterer
-        reproduzierbarer Befund verlängert die Arbeit bewusst.
+        Stunden, nicht Minuten. Die Fixwelle und ihre Scoped-Abnahme sind
+        fertig, doch die vollständigen Gates auf exakt dem neuen Kandidaten
+        und anschließend beide Gesamtprüfungen müssen von vorn beginnen. Ein
+        weiterer reproduzierbarer Befund verlängert die Arbeit bewusst.
       </div>
       <div class="callout">
         <strong>Das technische Ziel ist erreicht, wenn:</strong> zwei frische
@@ -653,9 +655,9 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-07-31T16:39:39+02:00">31.07.2026, 16:39 Uhr MESZ</time>.
+      <time datetime="2026-07-31T17:15:46+02:00">31.07.2026, 17:15 Uhr MESZ</time>.
       Quelle dieses Zwischenstands: sauberer Branch
-      <code>codex/strangler-bilanzen</code> auf <code>218e7d2</code>,
+      <code>codex/strangler-bilanzen</code> auf <code>68b9a6f</code>,
       maschinenlesbare Task-4R-Nachweise, die neue Fixwellen-Dokumentation
       und frisch ausgeführte Controller-Gegenproben. Diese separate
       Berichtseite verändert die Klärwerk-App nicht.
