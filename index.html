@@ -317,28 +317,29 @@
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Der Rechenkern-Kandidat ist vollständig grün, aber noch nicht freigegeben.</strong>
-          Der exakt eingefrorene Commit <code>68b9a6f</code> bestand jetzt auch
-          die komplette Testsuite mit 4.344 bestandenen und 2 begründet
-          übersprungenen Tests. Die zwei unabhängigen Gesamtprüfungen wurden
-          wegen des PC-Neustarts vor ihrem Abschluss kontrolliert beendet;
-          für sie gibt es deshalb noch kein Ergebnis. Diese Seite ist weiterhin
-          ein Zwischenstand und ausdrücklich keine Freigabe.
+          <strong>Ein neuer Rechenkern-Kandidat wird gerade vollständig nachgeprüft.</strong>
+          Der frühere Kandidat <code>68b9a6f</code> bestand alle formalen Gates.
+          Danach fand der zweite unabhängige Prüfer noch einen kleinen, aber
+          echten Widerspruch in der Abschluss-Checkliste. Dieser Befund ist in
+          <code>b35006e</code> testgestützt korrigiert. Vollsuite, Beweisbuch und
+          fokussierte Prüfung laufen deshalb auf diesem neuen Kandidaten erneut.
+          Diese Seite ist weiterhin ein Zwischenstand und ausdrücklich keine
+          Freigabe.
         </div>
       </div>
 
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>codex/strangler-bilanzen · 66de9bf</strong>
+          <strong>codex/strangler-bilanzen · 670454f</strong>
         </div>
         <div class="fact">
           <span>Geprüfter Kandidat</span>
-          <strong>68b9a6f</strong>
+          <strong>b35006e</strong>
         </div>
         <div class="fact">
-          <span>Arbeitsbaum</span>
-          <strong>13 Nachweise gestagt · 0 ungestagt</strong>
+          <span>Formale Läufe</span>
+          <strong>3 getrennte Prüfpfade aktiv</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -403,10 +404,11 @@
           </p>
         </article>
         <article class="panel good">
-          <span class="label">Vollsuite auf 68b9a6f</span>
+          <span class="label">Vorgänger-Vollsuite auf 68b9a6f</span>
           <span class="metric">4344 / 0 / 2</span>
           <p>
-            4.344 Tests bestanden, kein Test schlug fehl und zwei begründete
+            Auf dem vorherigen Kandidaten bestanden 4.344 Tests, kein Test
+            schlug fehl und zwei begründete
             Tests wurden übersprungen. Laufzeit: 5.766,92 Sekunden, also
             1 Stunde, 36 Minuten und 6 Sekunden. Exit-Code 0 und Schlusszeile
             liegen im gespeicherten Laufprotokoll vor.
@@ -442,73 +444,90 @@
           </p>
         </article>
         <article class="panel good">
-          <span class="label">Kandidat technisch eingefroren</span>
+          <span class="label">Neuer Kandidat technisch eingefroren</span>
           <span class="metric">bytegenau</span>
           <p>
-            Der abgetrennte Prüf-Worktree steht weiterhin sauber auf
-            <code>68b9a6f</code> und dem Baum
-            <code>9c6ee268210d</code>. Damit beziehen sich die langen Läufe auf
-            exakt dieselben Programmdateien.
+            Drei abgetrennte Prüf-Worktrees stehen sauber auf
+            <code>b35006e</code> und dem Baum
+            <code>699d50854ec1</code>. Damit beziehen sich Vollsuite, Beweisbuch
+            und Fokusprüfung auf exakt dieselben Programmdateien.
           </p>
         </article>
       </div>
 
       <div class="callout">
-        Der Zweig steht inzwischen auf <code>66de9bf</code>. Dieser direkte
-        Nachfolgecommit enthält nur die vorab festgelegten Erwartungen für die
-        Abschlussläufe; der geprüfte Programmbaum bleibt <code>68b9a6f</code>.
-        Zusätzlich sind elf Befehlsnachweise und zwei Fortschrittsledger sicher
-        gestagt. Es gibt keine ungestagten Änderungen.
+        Der zweite Prüfer meldete auf dem Vorgänger <code>0 kritisch / 0 wichtig /
+        1 klein</code>: Eine lokale, nicht versionierte Arbeitskopie der
+        Abschluss-Checkliste war schwächer als der verbindliche Plan. Der Fix
+        markiert diese Kopie ausdrücklich als unverbindlich, erweitert das
+        Kompilationsgate um die Werkzeuge und schützt den richtigen
+        Task-6-Abschnitt mit gezielten Mutationstests. Commit <code>670454f</code>
+        enthält ausschließlich die elf vorab festgelegten Erwartungen für die
+        jetzigen Läufe auf <code>b35006e</code>.
       </div>
     </section>
 
     <section id="laeuft">
-      <h2>Aktueller Haltepunkt nach dem Neustart</h2>
+      <h2>Aktueller Haltepunkt</h2>
       <div class="grid">
-        <article class="panel good">
+        <article class="panel running">
           <span class="label">Formale Kandidatengates</span>
-          <span class="metric">abgeschlossen</span>
+          <span class="metric">laufen erneut</span>
           <p>
-            Fokusprüfung, Beweisbuch, Vollsuite, Referenzen, Generatoren,
-            Frozen-Sperren, Kompilierung und Git-Diff sind beendet. Seit dem
-            Neustart läuft kein weiterer langer Test im Hintergrund.
+            Vollsuite, Beweisbuch und Fokusprüfung laufen parallel in getrennten
+            Worktrees. Danach folgen Referenzen, drei Generatoren,
+            Frozen-Sperren, Kompilierung, exakter Git-Diff und Sauberkeitsstatus.
+            Ein Timeout oder Teilresultat wird nicht als bestanden gewertet.
           </p>
         </article>
         <article class="panel running">
           <span class="label">Gesamtprüfung A</span>
-          <span class="metric">nicht abgeschlossen</span>
+          <span class="metric">frischer Start folgt</span>
           <p>
-            Der Prüfer sollte Identität, Herkunft, Doppelbuchungen und alle
-            sechs eingefrorenen Fälle angreifen. Er wurde vor dem PC-Neustart
-            ohne fertigen Bericht gestoppt. Ein Teilstand wird nicht als
-            Null-Befund gewertet; die Prüfung startet frisch von vorn.
+            Der frühere Prüfer A meldete auf <code>68b9a6f</code> zwar
+            <code>0/0/0</code>. Weil Kandidat und Gatevertrag danach geändert
+            wurden, zählt dies nicht als Abschluss für <code>b35006e</code>.
+            Nach den formalen Gates startet ein neuer Prüfer von vorn.
           </p>
         </article>
         <article class="panel running">
           <span class="label">Gesamtprüfung B</span>
-          <span class="metric">nicht abgeschlossen</span>
+          <span class="metric">Befund geschlossen</span>
           <p>
-            Der zweite Prüfer sollte Dimensionen, Zeitbezug, Builder,
-            Generatoren und Testorakel unabhängig angreifen. Auch dieser Lauf
-            endete wegen des Neustarts ohne Abschlussbericht und wird deshalb
-            weder positiv noch negativ verbucht.
+            Prüfer B fand den Checklisten-Widerspruch und meldete korrekt
+            <code>0/0/1</code>. Der Befund erhielt einen roten Test, wurde
+            korrigiert und mit 26 relevanten grünen Tests bestätigt. Auch hier
+            ist anschließend eine vollständig neue Prüfung vorgeschrieben.
           </p>
         </article>
         <article class="panel info">
           <span class="label">Sicherer Wiederanlaufpunkt</span>
           <span class="metric">vollständig gespeichert</span>
           <p>
-            Erwartungscommit, Testprotokolle, Ergebnisdateien und die 13
-            vorbereiteten Nachweisänderungen liegen auf der Festplatte. Es gibt
-            keine Git-Sperrdatei und keine offene ungespeicherte Änderung.
+            Fixcommit <code>b35006e</code>, Erwartungscommit
+            <code>670454f</code>, drei saubere Kandidaten-Worktrees und getrennte
+            Rohlogpfade liegen auf der Festplatte. Hauptzweig, Firebase und
+            Vercel wurden weiterhin nicht verändert.
+          </p>
+        </article>
+        <article class="panel info">
+          <span class="label">Verworfener Umgebungsversuch</span>
+          <span class="metric">nicht gewertet</span>
+          <p>
+            Im zuerst neu angelegten Ledger-Worktree fehlte <code>node_modules</code>
+            und damit AJV. Die daraus entstandenen 114 Fehler waren keine
+            App-Fehler. Das Log bleibt als Fehlstart erhalten, zählt aber nicht
+            als Nachweis. Nach geprüfter Einbindung derselben Abhängigkeiten
+            starteten Ledger und Fokusprüfung vollständig neu.
           </p>
         </article>
       </div>
       <div class="callout warning">
-        <strong>Ehrliche Grenze:</strong> Die grünen 4.344 Tests ersetzen die
-        beiden Gesamtprüfer nicht. Umgekehrt ist ihr abgebrochener Lauf kein
-        Fehlernachweis. Der korrekte Status lautet daher: Rechenkern-Gates grün,
-        unabhängige Null-Befund-Schleife offen.
+        <strong>Ehrliche Grenze:</strong> Die alten grünen 4.344 Tests sind ein
+        starker Nachweis für <code>68b9a6f</code>, aber keine Freigabe für den
+        neuen Kandidaten. Der korrekte Status lautet: kleiner Reviewbefund
+        geschlossen, neue formale Gates laufen, unabhängige Null-Befund-Schleife
+        anschließend weiterhin offen.
       </div>
     </section>
 
@@ -618,9 +637,14 @@
       <h2>Die nächsten Schritte bis zum Ziel</h2>
       <ol class="checklist">
         <li>
+          Die drei laufenden formalen Prüfpfade auf <code>b35006e</code>
+          vollständig beenden und sämtliche Ergebnisse gegen die vorab
+          versiegelten Erwartungen prüfen.
+        </li>
+        <li>
           Zwei neue unabhängige Gesamtprüfungen vollständig von vorn starten.
-          Die abgebrochenen Teilprüfungen werden nicht fortgeschrieben und
-          nicht als Bestätigung verwendet.
+          Frühere Prüfergebnisse werden nicht als Bestätigung des neuen
+          Kandidaten wiederverwendet.
         </li>
         <li>
           Jeden neuen reproduzierbaren Befund mit eigener ID, rotem
@@ -629,8 +653,8 @@
         </li>
         <li>
           Bei zweimal 0/0/0 die beiden Prüfberichte, ihre Manifeste und die
-          bereits vorbereiteten 13 Nachweise in einem sauberen
-          Vor-Bericht-Commit binden.
+          elf neuen Befehlsnachweise in einem sauberen Vor-Bericht-Commit
+          binden.
         </li>
         <li>
           Zuerst rote Berichtstests schreiben, dann den großen deutschen
@@ -677,11 +701,12 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-07-31T19:31:20+02:00">31.07.2026, 19:31 Uhr MESZ</time>.
-      Frisch belegt aus Git, dem sauberen abgetrennten Kandidaten-Worktree,
-      den gespeicherten Schlusszeilen der Testläufe und den gestagten
-      Task-4R-Nachweisen. Diese separate Berichtseite verändert weder die
-      Klärwerk-App noch Firebase oder Vercel.
+      <time datetime="2026-07-31T23:34:04+02:00">31.07.2026, 23:34 Uhr MESZ</time>.
+      Frisch belegt aus Git, drei sauberen abgetrennten Kandidaten-Worktrees,
+      den laufenden Prozesszuständen und den lokal gespeicherten Rohlogs.
+      Laufende Tests werden nicht vorzeitig als bestanden bezeichnet. Diese
+      separate Berichtseite verändert weder die Klärwerk-App noch Firebase
+      oder Vercel.
     </footer>
   </main>
 </body>
