@@ -317,10 +317,11 @@
         <span class="status-dot" aria-hidden="true"></span>
         <div>
           <strong>Der große Abschlussbericht ist noch nicht fertig.</strong>
-          Zwei unabhängige Schlussprüfungen und ein zusätzlicher kompletter
-          Sicherheitstest laufen noch. Diese Seite ist der aktuelle,
-          smartphone-lesbare Zwischenstand und bezeichnet laufende Prüfungen
-          ausdrücklich nicht als bestanden.
+          Beide unabhängigen Schlussprüfungen sind inzwischen beendet und haben
+          den Stand noch nicht freigegeben. Sie fanden vier unterschiedliche
+          wichtige Punkte. Diese Seite ist der aktuelle, smartphone-lesbare
+          Zwischenstand und bezeichnet die laufende Fixwelle ausdrücklich noch
+          nicht als bestanden.
         </div>
       </div>
 
@@ -440,31 +441,36 @@
       <h2>Was gerade tatsächlich läuft</h2>
       <div class="grid">
         <article class="panel running">
-          <span class="label">Zusätzlicher Sicherheitstest</span>
-          <span class="metric">95 %</span>
+          <span class="label">Gebündelte Fixwelle Runde 4</span>
+          <span class="metric">4 Punkte</span>
           <p>
-            Ein weiterer kompletter Testlauf prüft den Stand vor den letzten
-            reinen Dokumentationskorrekturen. Er zeigt bis 95 Prozent keinen
-            sichtbaren Fehler. Das ist noch kein bestandenes Ergebnis, solange
-            die Schlusszeile und der Exit-Code fehlen.
+            Ein frischer Implementierer schließt einen koordiniert akzeptierten
+            Wasser-Falschwert, das 1.000-Zeilen-Modularitätsgate, den zu
+            schwachen Branch-Diff-Nachweis und die fehlenden Abschlussläufe auf
+            dem aktuellen Kandidaten. Die Korrektur beginnt mit roten
+            Gegenbeispielen.
           </p>
         </article>
-        <article class="panel running">
-          <span class="label">Unabhängige Schlussprüfer</span>
-          <span class="metric">2 laufen</span>
+        <article class="panel open">
+          <span class="label">Zusätzlicher Sicherheitstest</span>
+          <span class="metric">bei 95 % beendet</span>
           <p>
-            Prüfer A greift Quellenidentität, Doppelbuchungen und
-            Belegketten an. Prüfer B greift Einheiten, Zeitinventare,
-            Referenzfälle und Testorakel an. Beide prüfen exakt Commit
-            <code>411ebee</code>. Ihre Berichte sind noch nicht abgegeben.
+            Der Lauf zeigte bis dahin keinen sichtbaren Fehler, prüfte aber
+            einen älteren Commit. Nach dem Review wurde er gezielt beendet,
+            statt ihn fälschlich als Abschlussnachweis zu verwenden. Der
+            vollständige Test wird nach der Fixwelle auf exakt dem neuen
+            Kandidaten neu gestartet.
           </p>
         </article>
       </div>
       <div class="callout warning">
-        <strong>Warum ich noch kein „fertig“ melde:</strong> Ein Prüferbericht
-        gilt erst, wenn er als Datei vorliegt und sein Befund am Code
-        nachvollzogen wurde. Ein Testlauf gilt erst mit vollständiger
-        Zusammenfassung und Exit-Code null.
+        <strong>Ergebnis der beiden Prüfungen:</strong> Prüfer A meldete
+        0 kritisch / 2 wichtig / 0 klein, Prüfer B
+        0 kritisch / 3 wichtig / 0 klein. Der Dateigrößenfehler überschneidet
+        sich, daher bleiben vier unterschiedliche wichtige Punkte. Der
+        Wasser-Falschwert <code>8331 m3</code> statt <code>8208 m3</code>
+        wurde vom Controller unabhängig reproduziert. Er betrifft die neue
+        Kontrollschicht, nicht nachweislich die aktuelle Live-Ausgabe.
       </div>
     </section>
 
@@ -602,10 +608,10 @@
       <div class="callout warning">
         <strong>Wann sind wir am Ziel?</strong> Im fundfreien Fall sind noch
         mehrere lange Prüf- und Berichtsblöcke nötig; realistisch sind weitere
-        Stunden, nicht Minuten. Eine seriöse Uhrzeit kann erst nach den beiden
-        laufenden Schlussprüfungen genannt werden. Ein neuer reproduzierbarer
-        Befund verlängert die Arbeit bewusst, weil dann die betreffende
-        Prüfgruppe neu beginnt.
+        Stunden, nicht Minuten. Nach der laufenden Fixwelle müssen die
+        vollständigen Gates auf exakt dem neuen Kandidaten und anschließend
+        beide Schlussprüfungen von vorn beginnen. Ein weiterer reproduzierbarer
+        Befund verlängert die Arbeit bewusst.
       </div>
       <div class="callout">
         <strong>Das technische Ziel ist erreicht, wenn:</strong> zwei frische
@@ -618,7 +624,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-07-31T15:24:00+02:00">31.07.2026, 15:24 Uhr MESZ</time>.
+      <time datetime="2026-07-31T15:47:00+02:00">31.07.2026, 15:47 Uhr MESZ</time>.
       Quelle dieses Zwischenstands: sauberer Branch
       <code>codex/strangler-bilanzen</code> auf <code>411ebee</code>,
       maschinenlesbare Task-4R-Nachweise und frisch gelesene laufende
