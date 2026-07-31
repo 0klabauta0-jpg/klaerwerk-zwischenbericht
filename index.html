@@ -310,36 +310,35 @@
       <h1>Wo der Umbau jetzt wirklich steht</h1>
       <p class="lead">
         Ein ehrlicher Bericht für Nicht-Programmierer und technisch Interessierte.
-        Er erklärt, was erledigt ist, was gerade läuft und warum der endgültige
-        Abschlussbericht noch nicht veröffentlicht wurde.
+        Er erklärt, was die lange Prüfzeit tatsächlich bewirkt, was nachweisbar
+        fertig ist und welche Schranken vor Zusammenführung und Onlinegang noch
+        geschlossen werden müssen.
       </p>
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Der große Abschlussbericht ist noch nicht fertig.</strong>
-          Die vier Punkte der letzten beiden Schlussprüfungen sowie ein danach
-          gefundener Testorakel-Fehler sind im Kandidaten
-          <code>68b9a6f</code> korrigiert. Eine frische Scoped-Prüfung endete
-          mit 0/0/0. Im commitgenauen Abschlusslauf sind Fokusprüfung,
-          Beweisbuch, Referenzen und Generatoren bereits grün; die Vollsuite
-          steht bei 94 %. Zwei neue Gesamtprüfungen stehen danach noch aus.
-          Diese Seite ist deshalb weiterhin ein Zwischenstand und keine
-          Freigabe.
+          <strong>Der Rechenkern-Kandidat ist vollständig grün, aber noch nicht freigegeben.</strong>
+          Der exakt eingefrorene Commit <code>68b9a6f</code> bestand jetzt auch
+          die komplette Testsuite mit 4.344 bestandenen und 2 begründet
+          übersprungenen Tests. Die zwei unabhängigen Gesamtprüfungen wurden
+          wegen des PC-Neustarts vor ihrem Abschluss kontrolliert beendet;
+          für sie gibt es deshalb noch kein Ergebnis. Diese Seite ist weiterhin
+          ein Zwischenstand und ausdrücklich keine Freigabe.
         </div>
       </div>
 
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>codex/strangler-bilanzen</strong>
+          <strong>codex/strangler-bilanzen · 66de9bf</strong>
         </div>
         <div class="fact">
-          <span>Aktueller Commit</span>
+          <span>Geprüfter Kandidat</span>
           <strong>68b9a6f</strong>
         </div>
         <div class="fact">
           <span>Arbeitsbaum</span>
-          <strong>Sauber</strong>
+          <strong>13 Nachweise gestagt · 0 ungestagt</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -351,7 +350,7 @@
     <nav aria-label="Inhalt">
       <a href="#kurzfassung">Kurzfassung</a>
       <a href="#erledigt">Erledigt</a>
-      <a href="#laeuft">Läuft gerade</a>
+      <a href="#laeuft">Aktueller Haltepunkt</a>
       <a href="#warum">Warum so lange?</a>
       <a href="#offen">Noch offen</a>
       <a href="#ziel">Weg zum Ziel</a>
@@ -365,9 +364,9 @@
           <h3>Der laufende Motor bleibt zunächst drin</h3>
           <p>
             Die alte Berechnung der App ist weiterhin maßgeblich. Daneben wurden
-            kleinere Kontrollmodule gebaut. Sie prüfen Herkunft, Einheit,
-            Bilanzgrenze und zeitliche Zuordnung der Werte, ohne heimlich die
-            angezeigten Anlagenresultate auszutauschen.
+            klar begrenzte Kontrollmodule gebaut. Sie prüfen Herkunft, Einheit,
+            Bilanzgrenze und zeitliche Zuordnung der Werte, ohne die angezeigten
+            Anlagenresultate heimlich auszutauschen.
           </p>
         </article>
         <article class="panel info">
@@ -393,22 +392,24 @@
       <h2>Was nachweisbar erledigt ist</h2>
       <div class="grid">
         <article class="panel good">
-          <span class="label">Pakete 00 bis 05</span>
-          <span class="metric">6 Pakete</span>
+          <span class="label">Paket 00 bis Paket 05</span>
+          <span class="metric">6 Baustufen</span>
           <p>
-            Nachweisvertrag, gemeinsame Evidenz, Inventare, Wasser und
-            Nassschlamm, Gas und Energie sowie die globale Regel „jede physische
-            Quelle genau einmal“ sind umgesetzt und durch frühere unabhängige
-            Prüfungen gegangen.
+            Paket 00 schützt die Nachweiskette. Paket 01 trennt physische von
+            abgeleiteten Werten. Danach kamen dimensionssichere Inventare,
+            Wasser und Nassschlamm, Gas und Energie sowie die globale Regel
+            „jede physische Quelle genau einmal“. Die Arbeit ist also größer
+            geworden als die ursprünglichen ersten beiden Pakete.
           </p>
         </article>
         <article class="panel good">
-          <span class="label">Formaler Volltest</span>
-          <span class="metric">4316 / 0 / 2</span>
+          <span class="label">Vollsuite auf 68b9a6f</span>
+          <span class="metric">4344 / 0 / 2</span>
           <p>
-            Am fest gebundenen Prüfstand <code>79cc916</code> bestanden
-            4316 Tests, kein Test schlug fehl und zwei begründete Tests wurden
-            übersprungen. Laufzeit: 4781,28 Sekunden, also knapp 80 Minuten.
+            4.344 Tests bestanden, kein Test schlug fehl und zwei begründete
+            Tests wurden übersprungen. Laufzeit: 5.766,92 Sekunden, also
+            1 Stunde, 36 Minuten und 6 Sekunden. Exit-Code 0 und Schlusszeile
+            liegen im gespeicherten Laufprotokoll vor.
           </p>
         </article>
         <article class="panel good">
@@ -416,108 +417,98 @@
           <span class="metric">158 / 158</span>
           <p>
             Die Prüfungen des maschinenlesbaren Nachweisledgers bestanden in
-            3173,42 Sekunden. Das ist der langsame Teil, der unter anderem
-            Commits, Hashes, Reihenfolge und unveränderte Historie kontrolliert.
+            4.158,81 Sekunden, also 1 Stunde, 9 Minuten und 18 Sekunden. Sie
+            kontrollieren Commits, Hashes, Reihenfolge, vorab festgelegte
+            Erwartungen und die unveränderte Historie.
           </p>
         </article>
         <article class="panel good">
-          <span class="label">Fachliche Schutzgates</span>
-          <span class="metric">22 Fälle</span>
+          <span class="label">Gezielte Rechenkern-Prüfung</span>
+          <span class="metric">502 / 502</span>
           <p>
-            Die vollständige Referenzprüfung meldete 22 unveränderte Fälle.
-            Domain-, Bilanz- und Zeitgenerator, Frozen-Sperren, Kompilierung und
-            die technischen Integritätsprüfungen waren ebenfalls grün.
+            Die eng auf Herkunft, Einheiten, Inventare und Bilanzen gerichtete
+            Prüfung bestand in 291,48 Sekunden. Sie weist unter anderem den
+            früher fälschlich akzeptierten Wasserwert 8.331 m³ zugunsten der
+            unabhängig berechneten 8.208 m³ zurück.
+          </p>
+        </article>
+        <article class="panel good">
+          <span class="label">Referenzen und Generatoren</span>
+          <span class="metric">alle grün</span>
+          <p>
+            22 vollständige Referenzfälle, Domain-, Bilanz- und Zeitgenerator,
+            zwei Frozen-Sperren, Kompilierung und der exakte Git-Diff bestanden
+            auf demselben Kandidaten.
+          </p>
+        </article>
+        <article class="panel good">
+          <span class="label">Kandidat technisch eingefroren</span>
+          <span class="metric">bytegenau</span>
+          <p>
+            Der abgetrennte Prüf-Worktree steht weiterhin sauber auf
+            <code>68b9a6f</code> und dem Baum
+            <code>9c6ee268210d</code>. Damit beziehen sich die langen Läufe auf
+            exakt dieselben Programmdateien.
           </p>
         </article>
       </div>
 
       <div class="callout">
-        Seit diesem formalen Prüfstand wurden vier Commits mit Nachweisen,
-        Berichtskorrekturen und Regressionstests ergänzt. Die geschützten
-        Live-Berechnungsdateien und die Live-Oberfläche wurden dabei nicht
-        verändert. Der gesamte Branch-Diff ist aktuell frei von
-        Leerzeichenfehlern.
+        Der Zweig steht inzwischen auf <code>66de9bf</code>. Dieser direkte
+        Nachfolgecommit enthält nur die vorab festgelegten Erwartungen für die
+        Abschlussläufe; der geprüfte Programmbaum bleibt <code>68b9a6f</code>.
+        Zusätzlich sind elf Befehlsnachweise und zwei Fortschrittsledger sicher
+        gestagt. Es gibt keine ungestagten Änderungen.
       </div>
     </section>
 
     <section id="laeuft">
-      <h2>Was gerade tatsächlich läuft</h2>
+      <h2>Aktueller Haltepunkt nach dem Neustart</h2>
       <div class="grid">
-        <article class="panel running">
-          <span class="label">Fixwelle Runde 4</span>
-          <span class="metric">Runde 5 fertig</span>
-          <p>
-            Der Kandidat <code>68b9a6f</code> schließt den koordiniert
-            akzeptierten Wasser-Falschwert, teilt die übergroße Testdatei und
-            bindet den Branch-Diff-Nachweis an den exakten Commitbereich. Ein
-            danach entdecktes zirkuläres Testorakel wurde ebenfalls mit eigener
-            testseitiger Basisbindung beseitigt.
-          </p>
-        </article>
-        <article class="panel running">
-          <span class="label">Formaler Fokuslauf</span>
-          <span class="metric">502 / 502</span>
-          <p>
-            Die zuvor akzeptierten <code>8331 m3</code> werden nun gegenüber
-            den fachlich richtigen <code>8208 m3</code> zurückgewiesen. Alle
-            sieben betroffenen Dateien liegen unter 1.000 Zeilen. Zusätzlich
-            decken 49 pfadexakte Regeln sämtliche Rohquellen aller sechs
-            eingefrorenen Prüffälle ohne Lücke oder unbenutzte Regel ab.
-          </p>
-        </article>
-        <article class="panel running">
-          <span class="label">Frische Scoped-Prüfung</span>
-          <span class="metric">0 / 0 / 0</span>
-          <p>
-            Ein neuer, nicht an der Korrektur beteiligter Prüfer fand keinen
-            kritischen, wichtigen oder kleinen Befund. Er bestätigte 361
-            Fokusprüfungen, 672 Feldmutationen, sechs
-            Herkunftsvertauschungen sowie die unabhängige Git-Basisbindung.
-            Damit darf die lange formale Testkette jetzt beginnen.
-          </p>
-        </article>
         <article class="panel good">
-          <span class="label">Beweisbuch auf 68b9a6f</span>
-          <span class="metric">158 / 158</span>
+          <span class="label">Formale Kandidatengates</span>
+          <span class="metric">abgeschlossen</span>
           <p>
-            Der aktuelle, nicht nur historische Ledger-Lauf besitzt eine echte
-            Schlusszeile und Exit-Code 0. Laufzeit: 1:09:18. Er prüft unter
-            anderem Reihenfolge, Hashes, unveränderte Historie und die vorab
-            gebundenen Erwartungen.
+            Fokusprüfung, Beweisbuch, Vollsuite, Referenzen, Generatoren,
+            Frozen-Sperren, Kompilierung und Git-Diff sind beendet. Seit dem
+            Neustart läuft kein weiterer langer Test im Hintergrund.
           </p>
         </article>
         <article class="panel running">
-          <span class="label">Vollsuite auf 68b9a6f</span>
-          <span class="metric">94 %</span>
+          <span class="label">Gesamtprüfung A</span>
+          <span class="metric">nicht abgeschlossen</span>
           <p>
-            Die Suite umfasst 4.346 gesammelte Tests. Sie befindet sich im
-            langsamen eigenen Ledger-Anteil, läuft aktiv weiter und zeigt
-            bislang keinen Fehler. Erst eine Schlusszeile mit
-            <code>4344 passed, 2 skipped</code> und Exit-Code 0 zählt als
-            bestanden.
+            Der Prüfer sollte Identität, Herkunft, Doppelbuchungen und alle
+            sechs eingefrorenen Fälle angreifen. Er wurde vor dem PC-Neustart
+            ohne fertigen Bericht gestoppt. Ein Teilstand wird nicht als
+            Null-Befund gewertet; die Prüfung startet frisch von vorn.
           </p>
         </article>
-        <article class="panel good">
-          <span class="label">Weitere formale Gates</span>
-          <span class="metric">grün</span>
+        <article class="panel running">
+          <span class="label">Gesamtprüfung B</span>
+          <span class="metric">nicht abgeschlossen</span>
           <p>
-            22 Referenzfälle, Domain-, Legacy- und Zeitgenerator, Frozen-Sperren,
-            Kompilierung, exakter Branch-Diff und Arbeitsbaumstatus sind auf
-            demselben eingefrorenen Kandidaten bereits erfolgreich geprüft.
+            Der zweite Prüfer sollte Dimensionen, Zeitbezug, Builder,
+            Generatoren und Testorakel unabhängig angreifen. Auch dieser Lauf
+            endete wegen des Neustarts ohne Abschlussbericht und wird deshalb
+            weder positiv noch negativ verbucht.
+          </p>
+        </article>
+        <article class="panel info">
+          <span class="label">Sicherer Wiederanlaufpunkt</span>
+          <span class="metric">vollständig gespeichert</span>
+          <p>
+            Erwartungscommit, Testprotokolle, Ergebnisdateien und die 13
+            vorbereiteten Nachweisänderungen liegen auf der Festplatte. Es gibt
+            keine Git-Sperrdatei und keine offene ungespeicherte Änderung.
           </p>
         </article>
       </div>
       <div class="callout warning">
-        <strong>Ausgangspunkt der Korrektur:</strong> Prüfer A meldete
-        0 kritisch / 2 wichtig / 0 klein, Prüfer B
-        0 kritisch / 3 wichtig / 0 klein. Der Dateigrößenfehler überschneidet
-        sich, daher bleiben vier unterschiedliche wichtige Punkte. Der
-        Wasser-Falschwert <code>8331 m3</code> statt <code>8208 m3</code>
-        wurde vom Controller unabhängig reproduziert und wird vom neuen
-        Kandidaten nun abgewiesen. Die anschließende Scoped-Prüfung ist 0/0/0,
-        ersetzt aber noch nicht die Vollsuite und zwei neue vollständige
-        Null-Befund-Prüfungen. Der Fehler betraf die neue Kontrollschicht,
-        nicht nachweislich die aktuelle Live-Ausgabe.
+        <strong>Ehrliche Grenze:</strong> Die grünen 4.344 Tests ersetzen die
+        beiden Gesamtprüfer nicht. Umgekehrt ist ihr abgebrochener Lauf kein
+        Fehlernachweis. Der korrekte Status lautet daher: Rechenkern-Gates grün,
+        unabhängige Null-Befund-Schleife offen.
       </div>
     </section>
 
@@ -536,9 +527,10 @@
         <article class="step">
           <h3>Die letzten Prozent enthalten besonders langsame Kontrollen</h3>
           <p>
-            Der Fortschrittsbalken ist keine Uhr. Am Ende liegen unter anderem
-            die Beweisbuchprüfungen. Diese prüfen nicht nur eine Formel, sondern
-            vergleichen viele Dateien, Git-Stände und Hashes über die gesamte
+            Der Fortschrittsbalken ist keine Uhr. Der separate Ledger-Lauf und
+            die Vollsuite starteten parallel. Das Beweisbuch benötigte rund 69
+            Minuten, die Vollsuite rund 96 Minuten. Beide prüfen nicht nur eine
+            Formel, sondern auch Dateien, Git-Stände, Hashes und die gesamte
             dokumentierte Umbaugeschichte.
           </p>
         </article>
@@ -579,7 +571,9 @@
           <p>
             Der spätere Abschlussbericht muss auf Desktop und 360-Pixel-Mobil,
             direkt als lokale Datei, mit Suche, Filtern, Sprungzielen und allen
-            aufklappbaren Erklärungen fehlerfrei funktionieren.
+            aufklappbaren Erklärungen fehlerfrei funktionieren. Dieser Nachweis
+            existiert für den Abschlussbericht noch nicht, weil die Datei noch
+            nicht gebaut wurde.
           </p>
         </article>
         <article class="panel open">
@@ -602,9 +596,10 @@
           <h3>Performance-Runde</h3>
           <p>
             Die gezielte Beschleunigung folgt nach der funktionalen Freigabe.
-            Der alte Volltest dauerte früher mehrere Stunden; der aktuelle
-            formale Lauf liegt bei knapp 80 Minuten. Eine weitere Verbesserung
-            ist sinnvoll, darf aber keine Tests entfernen.
+            Der aktuelle formale Volltest liegt bei 96 Minuten. Das ist deutlich
+            unter dem vom Nutzer erinnerten früheren Fünf-Stunden-Lauf, aber
+            weiterhin lang. Eine Verbesserung ist sinnvoll, darf jedoch keine
+            Schutzprüfung entfernen oder schwächen.
           </p>
         </article>
         <article class="panel open">
@@ -623,47 +618,53 @@
       <h2>Die nächsten Schritte bis zum Ziel</h2>
       <ol class="checklist">
         <li>
-          Die erwarteten Ergebnisse vorab an den exakten Kandidaten binden,
-          damit nachträglich kein bequemeres Ergebnis eingetragen werden kann.
+          Zwei neue unabhängige Gesamtprüfungen vollständig von vorn starten.
+          Die abgebrochenen Teilprüfungen werden nicht fortgeschrieben und
+          nicht als Bestätigung verwendet.
         </li>
         <li>
-          Den neuen Kandidaten in einem sauberen, abgetrennten Arbeitsverzeichnis
-          einfrieren und Fokus-, Ledger-, Voll-, Referenz-, Generator-,
-          Frozen-, Kompilierungs- und Bereichsprüfungen vollständig ausführen.
+          Jeden neuen reproduzierbaren Befund mit eigener ID, rotem
+          Regressionstest und begrenzter Korrektur schließen. Danach müssen
+          beide Gesamtprüfungen erneut von vorn beginnen.
         </li>
         <li>
-          Zwei neue unabhängige Schlussprüfungen von vorn durchführen. Jeder
-          neue reproduzierbare Befund erhält eine neue ID, einen roten
-          Regressionstest und eine begrenzte Korrektur.
+          Bei zweimal 0/0/0 die beiden Prüfberichte, ihre Manifeste und die
+          bereits vorbereiteten 13 Nachweise in einem sauberen
+          Vor-Bericht-Commit binden.
         </li>
         <li>
-          Den Nachweisstand fest einfrieren und den großen deutschen
-          HTML-Abschlussbericht testgetrieben erzeugen.
+          Zuerst rote Berichtstests schreiben, dann den großen deutschen
+          HTML-Abschlussbericht erzeugen. Der Bericht erhält eine einfache
+          Erklärung und eine technische Nachweisebene.
         </li>
         <li>
-          Den Bericht offline über <code>file://</code> auf Desktop und Mobil
-          prüfen und von einem dritten unabhängigen Berichtsprüfer abnehmen
-          lassen.
+          Die exakten Berichtbytes offline über <code>file://</code> auf
+          Desktop und 360-Pixel-Mobil prüfen: Suche, Filter, Sprungziele,
+          Tastatur, Aufklapper, Überlauf und Browserkonsole.
         </li>
         <li>
-          Den alten <code>main</code>-Stand sichern, den Arbeitszweig lokal
-          zusammenführen und die App im zusammengeführten Zustand erneut
-          vollständig testen.
+          Einen dritten unabhängigen Berichtsprüfer und danach nochmals die
+          vollständigen Post-Report-Gates ausführen.
         </li>
         <li>
-          Erst danach pushen, Firebase und Vercel bereitstellen und die
-          ausgelieferte App sowie den Bericht live gegen die lokalen Bytes
-          prüfen.
+          Den alten <code>main</code>-Stand sichern, lokal zusammenführen und
+          die zusammengeführte App einschließlich Detailkarten, Zeitkarten,
+          API und Mobilansicht erneut prüfen.
+        </li>
+        <li>
+          Erst danach pushen, Firebase und Vercel bereitstellen und lokale
+          gegen ausgelieferte Bytes vergleichen. Anschließend folgt die
+          getrennte Performance-Runde.
         </li>
       </ol>
 
       <div class="callout warning">
         <strong>Wann sind wir am Ziel?</strong> Im fundfreien Fall sind noch
-        mehrere lange Prüf- und Berichtsblöcke nötig; realistisch sind weitere
-        Stunden, nicht Minuten. Die Fixwelle und ihre Scoped-Abnahme sind
-        fertig, doch die vollständigen Gates auf exakt dem neuen Kandidaten
-        und anschließend beide Gesamtprüfungen müssen von vorn beginnen. Ein
-        weiterer reproduzierbarer Befund verlängert die Arbeit bewusst.
+        mehrere Prüf-, Berichts-, Merge- und Live-Blöcke nötig. Schon ein
+        einzelner Volltest benötigt derzeit rund 96 Minuten; deshalb sind
+        weitere Stunden Maschinenzeit realistisch, nicht Minuten. Ein seriöser
+        Fertigtermin ist erst nach den beiden Gesamtprüfungen möglich. Jeder
+        neue reproduzierbare Befund verlängert die Arbeit bewusst.
       </div>
       <div class="callout">
         <strong>Das technische Ziel ist erreicht, wenn:</strong> zwei frische
@@ -676,12 +677,11 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-07-31T18:59:34+02:00">31.07.2026, 18:59 Uhr MESZ</time>.
-      Quelle dieses Zwischenstands: sauberer Branch
-      <code>codex/strangler-bilanzen</code> auf <code>68b9a6f</code>,
-      maschinenlesbare Task-4R-Nachweise, die neue Fixwellen-Dokumentation
-      und frisch ausgeführte Controller-Gegenproben. Diese separate
-      Berichtseite verändert die Klärwerk-App nicht.
+      <time datetime="2026-07-31T19:31:20+02:00">31.07.2026, 19:31 Uhr MESZ</time>.
+      Frisch belegt aus Git, dem sauberen abgetrennten Kandidaten-Worktree,
+      den gespeicherten Schlusszeilen der Testläufe und den gestagten
+      Task-4R-Nachweisen. Diese separate Berichtseite verändert weder die
+      Klärwerk-App noch Firebase oder Vercel.
     </footer>
   </main>
 </body>
