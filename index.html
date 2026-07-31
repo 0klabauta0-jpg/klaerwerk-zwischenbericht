@@ -317,12 +317,14 @@
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Ein neuer Rechenkern-Kandidat wird gerade vollständig nachgeprüft.</strong>
-          Der frühere Kandidat <code>68b9a6f</code> bestand alle formalen Gates.
-          Danach fand der zweite unabhängige Prüfer noch einen kleinen, aber
-          echten Widerspruch in der Abschluss-Checkliste. Dieser Befund ist in
-          <code>b35006e</code> testgestützt korrigiert. Vollsuite, Beweisbuch und
-          fokussierte Prüfung laufen deshalb auf diesem neuen Kandidaten erneut.
+          <strong>Runde 6 fand einen echten Windows-Browserfehler; Runde 7 läuft.</strong>
+          Auf <code>b35006e</code> waren zehn Abschlussgates grün. Die Vollsuite
+          endete jedoch mit 4.354 bestandenen, einem fehlgeschlagenen und zwei
+          übersprungenen Tests. Chromium übergab den Browser an einen neuen
+          Windows-Prozess, während die strenge Besitzprüfung noch den beendeten
+          Starter kontrollierte. Kandidat <code>72b71d9</code> verhindert diese
+          Übergabe, ohne die Besitzprüfung zu lockern. Drei vollständige
+          Prüfpfade laufen deshalb erneut.
           Diese Seite ist weiterhin ein Zwischenstand und ausdrücklich keine
           Freigabe.
         </div>
@@ -331,15 +333,15 @@
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>codex/strangler-bilanzen · 670454f</strong>
+          <strong>codex/strangler-bilanzen · 852a914</strong>
         </div>
         <div class="fact">
           <span>Geprüfter Kandidat</span>
-          <strong>b35006e</strong>
+          <strong>72b71d9</strong>
         </div>
         <div class="fact">
           <span>Formale Läufe</span>
-          <strong>3 getrennte Prüfpfade aktiv</strong>
+          <strong>Runde 7 · 3 Prüfpfade aktiv</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -448,9 +450,20 @@
           <span class="metric">bytegenau</span>
           <p>
             Drei abgetrennte Prüf-Worktrees stehen sauber auf
-            <code>b35006e</code> und dem Baum
-            <code>699d50854ec1</code>. Damit beziehen sich Vollsuite, Beweisbuch
+            <code>72b71d9</code> und dem Baum
+            <code>e2b65e6fba45</code>. Damit beziehen sich Vollsuite, Beweisbuch
             und Fokusprüfung auf exakt dieselben Programmdateien.
+          </p>
+        </article>
+        <article class="panel good">
+          <span class="label">Browserfehler reproduziert und begrenzt</span>
+          <span class="metric">18 / 18 + 41 / 41</span>
+          <p>
+            Der Browserabbruch trat vor dem Fix dreimal reproduzierbar auf.
+            Nach der Korrektur bestanden der echte Abschlussbericht-Browservertrag
+            mit 18 Tests und die angrenzenden Prozess-, Cleanup- und CDP-Verträge
+            mit 41 Tests. Der formale Runde-7-Browservertrag ist ebenfalls bereits
+            mit 18 von 18 Tests grün.
           </p>
         </article>
       </div>
@@ -461,9 +474,11 @@
         Abschluss-Checkliste war schwächer als der verbindliche Plan. Der Fix
         markiert diese Kopie ausdrücklich als unverbindlich, erweitert das
         Kompilationsgate um die Werkzeuge und schützt den richtigen
-        Task-6-Abschnitt mit gezielten Mutationstests. Commit <code>670454f</code>
-        enthält ausschließlich die elf vorab festgelegten Erwartungen für die
-        jetzigen Läufe auf <code>b35006e</code>.
+        Task-6-Abschnitt mit gezielten Mutationstests. Runde 6 bestätigte danach
+        Fokusprüfung, Ledger, Referenzen, Generatoren, Sperren, Kompilierung,
+        Diff und Sauberkeit. Nur die Vollsuite blieb wegen des Browserstarters
+        rot. Commit <code>852a914</code> enthält zwölf vorab festgelegte
+        Erwartungen für die jetzigen Läufe auf <code>72b71d9</code>.
       </div>
     </section>
 
@@ -472,12 +487,13 @@
       <div class="grid">
         <article class="panel running">
           <span class="label">Formale Kandidatengates</span>
-          <span class="metric">laufen erneut</span>
+          <span class="metric">Runde 7 läuft</span>
           <p>
             Vollsuite, Beweisbuch und Fokusprüfung laufen parallel in getrennten
-            Worktrees. Danach folgen Referenzen, drei Generatoren,
-            Frozen-Sperren, Kompilierung, exakter Git-Diff und Sauberkeitsstatus.
-            Ein Timeout oder Teilresultat wird nicht als bestanden gewertet.
+            Worktrees. Der neue Browservertrag ist bereits 18 von 18 grün.
+            Danach folgen Referenzen, drei Generatoren, Frozen-Sperren,
+            Kompilierung, exakter Git-Diff und Sauberkeitsstatus. Ein Timeout
+            oder Teilresultat wird nicht als bestanden gewertet.
           </p>
         </article>
         <article class="panel running">
@@ -486,7 +502,7 @@
           <p>
             Der frühere Prüfer A meldete auf <code>68b9a6f</code> zwar
             <code>0/0/0</code>. Weil Kandidat und Gatevertrag danach geändert
-            wurden, zählt dies nicht als Abschluss für <code>b35006e</code>.
+            wurden, zählt dies nicht als Abschluss für <code>72b71d9</code>.
             Nach den formalen Gates startet ein neuer Prüfer von vorn.
           </p>
         </article>
@@ -504,30 +520,32 @@
           <span class="label">Sicherer Wiederanlaufpunkt</span>
           <span class="metric">vollständig gespeichert</span>
           <p>
-            Fixcommit <code>b35006e</code>, Erwartungscommit
-            <code>670454f</code>, drei saubere Kandidaten-Worktrees und getrennte
+            Fixcommit <code>72b71d9</code>, Erwartungscommit
+            <code>852a914</code>, drei saubere Kandidaten-Worktrees und getrennte
             Rohlogpfade liegen auf der Festplatte. Hauptzweig, Firebase und
             Vercel wurden weiterhin nicht verändert.
           </p>
         </article>
         <article class="panel info">
-          <span class="label">Verworfener Umgebungsversuch</span>
+          <span class="label">Verworfene Messversuche</span>
           <span class="metric">nicht gewertet</span>
           <p>
             Im zuerst neu angelegten Ledger-Worktree fehlte <code>node_modules</code>
             und damit AJV. Die daraus entstandenen 114 Fehler waren keine
-            App-Fehler. Das Log bleibt als Fehlstart erhalten, zählt aber nicht
-            als Nachweis. Nach geprüfter Einbindung derselben Abhängigkeiten
-            starteten Ledger und Fokusprüfung vollständig neu.
+            App-Fehler. In Runde 7 behandelte außerdem ein erster Hintergrund-
+            Wrapper harmlose Git-Warnungen fälschlich als Abbruch. Beide
+            Rohversuche bleiben eindeutig als ungültig erhalten. Erst der
+            korrigierte Wrapper mit echtem Prozess-Exitcode zählt; alle drei
+            Prüfpfade starteten damit vollständig neu.
           </p>
         </article>
       </div>
       <div class="callout warning">
-        <strong>Ehrliche Grenze:</strong> Die alten grünen 4.344 Tests sind ein
-        starker Nachweis für <code>68b9a6f</code>, aber keine Freigabe für den
-        neuen Kandidaten. Der korrekte Status lautet: kleiner Reviewbefund
-        geschlossen, neue formale Gates laufen, unabhängige Null-Befund-Schleife
-        anschließend weiterhin offen.
+        <strong>Ehrliche Grenze:</strong> Runde 6 ist wegen eines Fehlers in der
+        Vollsuite nicht freigegeben, obwohl zehn andere Gates grün waren. Die
+        gezielte Korrektur ist belegt, aber erst Runde 7 kann <code>72b71d9</code>
+        als vollständigen Kandidaten bestätigen. Die unabhängige
+        Null-Befund-Schleife ist anschließend weiterhin offen.
       </div>
     </section>
 
@@ -547,8 +565,9 @@
           <h3>Die letzten Prozent enthalten besonders langsame Kontrollen</h3>
           <p>
             Der Fortschrittsbalken ist keine Uhr. Der separate Ledger-Lauf und
-            die Vollsuite starteten parallel. Das Beweisbuch benötigte rund 69
-            Minuten, die Vollsuite rund 96 Minuten. Beide prüfen nicht nur eine
+            die Vollsuite starteten parallel. Das Runde-6-Beweisbuch benötigte
+            1 Stunde und 23 Minuten, die Vollsuite 1 Stunde und 49 Minuten.
+            Beide prüfen nicht nur eine
             Formel, sondern auch Dateien, Git-Stände, Hashes und die gesamte
             dokumentierte Umbaugeschichte.
           </p>
@@ -615,7 +634,7 @@
           <h3>Performance-Runde</h3>
           <p>
             Die gezielte Beschleunigung folgt nach der funktionalen Freigabe.
-            Der aktuelle formale Volltest liegt bei 96 Minuten. Das ist deutlich
+            Der letzte formale Volltest lag bei 109 Minuten. Das ist deutlich
             unter dem vom Nutzer erinnerten früheren Fünf-Stunden-Lauf, aber
             weiterhin lang. Eine Verbesserung ist sinnvoll, darf jedoch keine
             Schutzprüfung entfernen oder schwächen.
@@ -637,7 +656,7 @@
       <h2>Die nächsten Schritte bis zum Ziel</h2>
       <ol class="checklist">
         <li>
-          Die drei laufenden formalen Prüfpfade auf <code>b35006e</code>
+          Die drei laufenden formalen Prüfpfade auf <code>72b71d9</code>
           vollständig beenden und sämtliche Ergebnisse gegen die vorab
           versiegelten Erwartungen prüfen.
         </li>
@@ -653,7 +672,7 @@
         </li>
         <li>
           Bei zweimal 0/0/0 die beiden Prüfberichte, ihre Manifeste und die
-          elf neuen Befehlsnachweise in einem sauberen Vor-Bericht-Commit
+          zwölf neuen Befehlsnachweise in einem sauberen Vor-Bericht-Commit
           binden.
         </li>
         <li>
@@ -685,7 +704,7 @@
       <div class="callout warning">
         <strong>Wann sind wir am Ziel?</strong> Im fundfreien Fall sind noch
         mehrere Prüf-, Berichts-, Merge- und Live-Blöcke nötig. Schon ein
-        einzelner Volltest benötigt derzeit rund 96 Minuten; deshalb sind
+        einzelner Volltest benötigte zuletzt rund 109 Minuten; deshalb sind
         weitere Stunden Maschinenzeit realistisch, nicht Minuten. Ein seriöser
         Fertigtermin ist erst nach den beiden Gesamtprüfungen möglich. Jeder
         neue reproduzierbare Befund verlängert die Arbeit bewusst.
@@ -701,7 +720,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-07-31T23:34:04+02:00">31.07.2026, 23:34 Uhr MESZ</time>.
+      <time datetime="2026-08-01T01:35:00+02:00">01.08.2026, 01:35 Uhr MESZ</time>.
       Frisch belegt aus Git, drei sauberen abgetrennten Kandidaten-Worktrees,
       den laufenden Prozesszuständen und den lokal gespeicherten Rohlogs.
       Laufende Tests werden nicht vorzeitig als bestanden bezeichnet. Diese
