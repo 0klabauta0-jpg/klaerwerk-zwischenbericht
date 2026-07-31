@@ -320,9 +320,11 @@
           Die vier Punkte der letzten beiden Schlussprüfungen sowie ein danach
           gefundener Testorakel-Fehler sind im Kandidaten
           <code>68b9a6f</code> korrigiert. Eine frische Scoped-Prüfung endete
-          mit 0/0/0. Die lange, commitgenaue Abschlussprüfung und zwei neue
-          Gesamtprüfungen stehen aber noch aus. Diese Seite ist deshalb
-          weiterhin ein Zwischenstand und keine Freigabe.
+          mit 0/0/0. Im commitgenauen Abschlusslauf sind Fokusprüfung,
+          Beweisbuch, Referenzen und Generatoren bereits grün; die Vollsuite
+          steht bei 94 %. Zwei neue Gesamtprüfungen stehen danach noch aus.
+          Diese Seite ist deshalb weiterhin ein Zwischenstand und keine
+          Freigabe.
         </div>
       </div>
 
@@ -453,8 +455,8 @@
           </p>
         </article>
         <article class="panel running">
-          <span class="label">Controller-Abnahme</span>
-          <span class="metric">205 Tests grün</span>
+          <span class="label">Formaler Fokuslauf</span>
+          <span class="metric">502 / 502</span>
           <p>
             Die zuvor akzeptierten <code>8331 m3</code> werden nun gegenüber
             den fachlich richtigen <code>8208 m3</code> zurückgewiesen. Alle
@@ -474,15 +476,34 @@
             Damit darf die lange formale Testkette jetzt beginnen.
           </p>
         </article>
-        <article class="panel open">
-          <span class="label">Zusätzlicher Sicherheitstest</span>
-          <span class="metric">bei 95 % beendet</span>
+        <article class="panel good">
+          <span class="label">Beweisbuch auf 68b9a6f</span>
+          <span class="metric">158 / 158</span>
           <p>
-            Der Lauf zeigte bis dahin keinen sichtbaren Fehler, prüfte aber
-            einen älteren Commit. Nach dem Review wurde er gezielt beendet,
-            statt ihn fälschlich als Abschlussnachweis zu verwenden. Der
-            vollständige Test wird nach der Fixwelle auf exakt dem neuen
-            Kandidaten neu gestartet.
+            Der aktuelle, nicht nur historische Ledger-Lauf besitzt eine echte
+            Schlusszeile und Exit-Code 0. Laufzeit: 1:09:18. Er prüft unter
+            anderem Reihenfolge, Hashes, unveränderte Historie und die vorab
+            gebundenen Erwartungen.
+          </p>
+        </article>
+        <article class="panel running">
+          <span class="label">Vollsuite auf 68b9a6f</span>
+          <span class="metric">94 %</span>
+          <p>
+            Die Suite umfasst 4.346 gesammelte Tests. Sie befindet sich im
+            langsamen eigenen Ledger-Anteil, läuft aktiv weiter und zeigt
+            bislang keinen Fehler. Erst eine Schlusszeile mit
+            <code>4344 passed, 2 skipped</code> und Exit-Code 0 zählt als
+            bestanden.
+          </p>
+        </article>
+        <article class="panel good">
+          <span class="label">Weitere formale Gates</span>
+          <span class="metric">grün</span>
+          <p>
+            22 Referenzfälle, Domain-, Legacy- und Zeitgenerator, Frozen-Sperren,
+            Kompilierung, exakter Branch-Diff und Arbeitsbaumstatus sind auf
+            demselben eingefrorenen Kandidaten bereits erfolgreich geprüft.
           </p>
         </article>
       </div>
@@ -655,7 +676,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-07-31T17:15:46+02:00">31.07.2026, 17:15 Uhr MESZ</time>.
+      <time datetime="2026-07-31T18:59:34+02:00">31.07.2026, 18:59 Uhr MESZ</time>.
       Quelle dieses Zwischenstands: sauberer Branch
       <code>codex/strangler-bilanzen</code> auf <code>68b9a6f</code>,
       maschinenlesbare Task-4R-Nachweise, die neue Fixwellen-Dokumentation
