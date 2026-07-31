@@ -317,11 +317,11 @@
         <span class="status-dot" aria-hidden="true"></span>
         <div>
           <strong>Der große Abschlussbericht ist noch nicht fertig.</strong>
-          Beide unabhängigen Schlussprüfungen sind inzwischen beendet und haben
-          den Stand noch nicht freigegeben. Sie fanden vier unterschiedliche
-          wichtige Punkte. Diese Seite ist der aktuelle, smartphone-lesbare
-          Zwischenstand und bezeichnet die laufende Fixwelle ausdrücklich noch
-          nicht als bestanden.
+          Die vier Punkte der letzten beiden Schlussprüfungen sind in einem
+          neuen Kandidaten korrigiert. Die erste Controller-Gegenprobe ist
+          grün; die lange, commitgenaue Abschlussprüfung und zwei neue
+          unabhängige Schlussprüfungen stehen aber noch aus. Diese Seite ist
+          deshalb weiterhin ein Zwischenstand und keine Freigabe.
         </div>
       </div>
 
@@ -332,7 +332,7 @@
         </div>
         <div class="fact">
           <span>Aktueller Commit</span>
-          <strong>411ebee</strong>
+          <strong>218e7d2</strong>
         </div>
         <div class="fact">
           <span>Arbeitsbaum</span>
@@ -441,14 +441,36 @@
       <h2>Was gerade tatsächlich läuft</h2>
       <div class="grid">
         <article class="panel running">
-          <span class="label">Gebündelte Fixwelle Runde 4</span>
-          <span class="metric">4 Punkte</span>
+          <span class="label">Fixwelle Runde 4</span>
+          <span class="metric">Kandidat fertig</span>
           <p>
-            Ein frischer Implementierer schließt einen koordiniert akzeptierten
-            Wasser-Falschwert, das 1.000-Zeilen-Modularitätsgate, den zu
-            schwachen Branch-Diff-Nachweis und die fehlenden Abschlussläufe auf
-            dem aktuellen Kandidaten. Die Korrektur beginnt mit roten
-            Gegenbeispielen.
+            Der Kandidat <code>218e7d2</code> schließt den koordiniert
+            akzeptierten Wasser-Falschwert, teilt die übergroße Testdatei und
+            bindet den Branch-Diff-Nachweis an den exakten Commitbereich. Die
+            Änderung begann mit acht echten roten Gegenbeispielen und wurde
+            anschließend grün implementiert.
+          </p>
+        </article>
+        <article class="panel running">
+          <span class="label">Controller-Abnahme</span>
+          <span class="metric">96 Tests grün</span>
+          <p>
+            Die zuvor akzeptierten <code>8331 m3</code> werden nun gegenüber
+            den fachlich richtigen <code>8208 m3</code> zurückgewiesen. Alle
+            sieben betroffenen Dateien liegen unter 1.000 Zeilen. Zusätzlich
+            decken 49 pfadexakte Regeln sämtliche Rohquellen aller sechs
+            eingefrorenen Prüffälle ohne Lücke oder unbenutzte Regel ab.
+          </p>
+        </article>
+        <article class="panel running">
+          <span class="label">Frische Diff-Prüfung</span>
+          <span class="metric">läuft</span>
+          <p>
+            Ein neuer, nicht an der Korrektur beteiligter Prüfer versucht
+            gerade, den Source-to-Term-Vertrag, Einheiten, Status,
+            Intervallfaktoren, Nullwerte und den Git-Nachweis erneut zu
+            brechen. Erst nach seiner Freigabe wird die lange formale
+            Testkette gestartet.
           </p>
         </article>
         <article class="panel open">
@@ -464,13 +486,15 @@
         </article>
       </div>
       <div class="callout warning">
-        <strong>Ergebnis der beiden Prüfungen:</strong> Prüfer A meldete
+        <strong>Ausgangspunkt der Korrektur:</strong> Prüfer A meldete
         0 kritisch / 2 wichtig / 0 klein, Prüfer B
         0 kritisch / 3 wichtig / 0 klein. Der Dateigrößenfehler überschneidet
         sich, daher bleiben vier unterschiedliche wichtige Punkte. Der
         Wasser-Falschwert <code>8331 m3</code> statt <code>8208 m3</code>
-        wurde vom Controller unabhängig reproduziert. Er betrifft die neue
-        Kontrollschicht, nicht nachweislich die aktuelle Live-Ausgabe.
+        wurde vom Controller unabhängig reproduziert und wird vom neuen
+        Kandidaten nun abgewiesen. Diese erste Gegenprobe ersetzt noch nicht
+        die Vollsuite und zwei neue Null-Befund-Prüfungen. Der Fehler betraf
+        die neue Kontrollschicht, nicht nachweislich die aktuelle Live-Ausgabe.
       </div>
     </section>
 
@@ -576,13 +600,18 @@
       <h2>Die nächsten Schritte bis zum Ziel</h2>
       <ol class="checklist">
         <li>
-          Den laufenden Volltest mit echter Schlusszeile und Exit-Code
-          abschließen und dokumentieren.
+          Die laufende unabhängige Diff-Prüfung abschließen. Jeder neue
+          reproduzierbare Befund führt wieder über roten Test und Korrektur.
         </li>
         <li>
-          Beide unabhängigen Schlussberichte prüfen. Jeder neue
-          reproduzierbare Befund erhält zuerst einen roten Regressionstest,
-          danach eine begrenzte Korrektur und zwei neue Schlussprüfungen.
+          Den neuen Kandidaten in einem sauberen, abgetrennten Arbeitsverzeichnis
+          einfrieren und Fokus-, Ledger-, Voll-, Referenz-, Generator-,
+          Frozen-, Kompilierungs- und Bereichsprüfungen vollständig ausführen.
+        </li>
+        <li>
+          Zwei neue unabhängige Schlussprüfungen von vorn durchführen. Jeder
+          neue reproduzierbare Befund erhält eine neue ID, einen roten
+          Regressionstest und eine begrenzte Korrektur.
         </li>
         <li>
           Den Nachweisstand fest einfrieren und den großen deutschen
@@ -608,10 +637,10 @@
       <div class="callout warning">
         <strong>Wann sind wir am Ziel?</strong> Im fundfreien Fall sind noch
         mehrere lange Prüf- und Berichtsblöcke nötig; realistisch sind weitere
-        Stunden, nicht Minuten. Nach der laufenden Fixwelle müssen die
+        Stunden, nicht Minuten. Die Fixwelle selbst ist fertig, doch die
         vollständigen Gates auf exakt dem neuen Kandidaten und anschließend
-        beide Schlussprüfungen von vorn beginnen. Ein weiterer reproduzierbarer
-        Befund verlängert die Arbeit bewusst.
+        beide Schlussprüfungen müssen von vorn beginnen. Ein weiterer
+        reproduzierbarer Befund verlängert die Arbeit bewusst.
       </div>
       <div class="callout">
         <strong>Das technische Ziel ist erreicht, wenn:</strong> zwei frische
@@ -624,12 +653,12 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-07-31T15:47:00+02:00">31.07.2026, 15:47 Uhr MESZ</time>.
+      <time datetime="2026-07-31T16:39:39+02:00">31.07.2026, 16:39 Uhr MESZ</time>.
       Quelle dieses Zwischenstands: sauberer Branch
-      <code>codex/strangler-bilanzen</code> auf <code>411ebee</code>,
-      maschinenlesbare Task-4R-Nachweise und frisch gelesene laufende
-      Prozessausgaben. Diese separate Berichtseite verändert die Klärwerk-App
-      nicht.
+      <code>codex/strangler-bilanzen</code> auf <code>218e7d2</code>,
+      maschinenlesbare Task-4R-Nachweise, die neue Fixwellen-Dokumentation
+      und frisch ausgeführte Controller-Gegenproben. Diese separate
+      Berichtseite verändert die Klärwerk-App nicht.
     </footer>
   </main>
 </body>
