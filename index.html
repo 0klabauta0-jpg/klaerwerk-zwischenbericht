@@ -323,10 +323,14 @@
           übersprungenen Tests. Chromium übergab den Browser an einen neuen
           Windows-Prozess, während die strenge Besitzprüfung noch den beendeten
           Starter kontrollierte. Kandidat <code>72b71d9</code> verhindert diese
-          Übergabe, ohne die Besitzprüfung zu lockern. Die kurze Prüfspur ist
-          inzwischen vollständig grün; Vollsuite und Beweisbuch laufen weiter.
-          Diese Seite ist weiterhin ein Zwischenstand und ausdrücklich keine
-          Freigabe.
+          Übergabe, ohne die Besitzprüfung zu lockern. Die zehn kurzen Gates
+          sind vollständig grün. Das Beweisbuch endete jedoch mit 157
+          bestandenen und einer fehlgeschlagenen Prüfung, weil die bereits
+          erstellte Abschlussakte der gescheiterten Runde 6 noch nicht im
+          sauberen Prüf-Commit enthalten war. Die Vollsuite läuft weiter; danach
+          wird die Nachweiskette committed und Runde 8 vollständig neu
+          vorgebunden. Diese Seite ist weiterhin ein Zwischenstand und
+          ausdrücklich keine Freigabe.
         </div>
       </div>
 
@@ -341,7 +345,7 @@
         </div>
         <div class="fact">
           <span>Formale Läufe</span>
-          <strong>Runde 7 · 10/12 Gates grün</strong>
+          <strong>Runde 7 · 10 grün, 1 rot, 1 läuft</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -487,14 +491,17 @@
       <div class="grid">
         <article class="panel running">
           <span class="label">Formale Kandidatengates</span>
-          <span class="metric">Runde 7 läuft</span>
+          <span class="metric">10 grün · 1 rot · 1 läuft</span>
           <p>
             Die kurze Spur ist vollständig beendet: Browservertrag 18/18,
             Fokusprüfung 513/513 sowie Referenzen, drei Generatoren,
             Frozen-Sperren, Kompilierung, exakter Git-Diff und Sauberkeitsstatus
-            sind grün. Vollsuite und Beweisbuch laufen weiterhin in getrennten
-            Worktrees. Ein Timeout oder Teilresultat wird nicht als bestanden
-            gewertet.
+            sind grün. Der Ledger-Lauf endete nach 40 Minuten mit 157/158
+            bestandenen Prüfungen. Seine eine rote Prüfung weist korrekt nach,
+            dass die Abschlussakte für Runde 6 zwar lokal erstellt, aber im
+            abgetrennten Kandidaten noch nicht committed war. Der Volltest läuft
+            weiterhin in einem getrennten Worktree. Ein Timeout oder
+            Teilresultat wird nicht als bestanden gewertet.
           </p>
         </article>
         <article class="panel running">
@@ -543,10 +550,12 @@
       </div>
       <div class="callout warning">
         <strong>Ehrliche Grenze:</strong> Runde 6 ist wegen eines Fehlers in der
-        Vollsuite nicht freigegeben, obwohl zehn andere Gates grün waren. Die
-        gezielte Korrektur ist belegt, aber erst Runde 7 kann <code>72b71d9</code>
-        als vollständigen Kandidaten bestätigen. Die unabhängige
-        Null-Befund-Schleife ist anschließend weiterhin offen.
+        Vollsuite nicht freigegeben. Runde 7 hat den Browserfix in zehn Gates
+        bestätigt, aber zugleich eine formale Lücke in der Nachweiskette
+        offengelegt. Darum kann auch <code>72b71d9</code> nicht freigegeben
+        werden. Nach Ende des laufenden Volltests werden beide gescheiterten
+        Runden vollständig abgeschlossen und eine frische Runde 8 gestartet.
+        Die unabhängige Null-Befund-Schleife bleibt danach weiterhin offen.
       </div>
     </section>
 
@@ -747,7 +756,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T02:05:00+02:00">01.08.2026, 02:05 Uhr MESZ</time>.
+      <time datetime="2026-08-01T02:18:00+02:00">01.08.2026, 02:18 Uhr MESZ</time>.
       Frisch belegt aus Git, drei sauberen abgetrennten Kandidaten-Worktrees,
       den laufenden Prozesszuständen und den lokal gespeicherten Rohlogs.
       Laufende Tests werden nicht vorzeitig als bestanden bezeichnet. Diese
