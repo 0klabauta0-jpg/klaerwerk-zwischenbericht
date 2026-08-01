@@ -362,7 +362,7 @@
         </div>
         <div class="fact">
           <span>Korrekturrunde</span>
-          <strong>Vollsuite grün · Ledger-Gate läuft</strong>
+          <strong>Task-Review rot · 1 wichtig / 1 klein</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -597,9 +597,16 @@
             Baum wurden im Erwartungscommit <code>4083811</code> versiegelt.
             Seine vollständige Suite bestand
             <strong>4546 Tests, 2 planmäßige Skips, 0 Fehler</strong> in 2:28:11;
-            getrennte Rohlogs, Exitcode 0 und Hashmetadaten sind vorhanden. Seit
-            18:50 Uhr läuft nun der ebenfalls versiegelte vollständige
-            Ledger-/Hardening-/Abschlussgate mit erwarteten 196 Prüfungen. Ein erster
+            getrennte Rohlogs, Exitcode 0 und Hashmetadaten sind vorhanden. Der
+            Ledger-/Hardening-/Abschlussgate bestand anschließend
+            <strong>196/196</strong> in 1:52:40. Der unabhängige Task-Review gab
+            Paket 5 trotzdem nicht frei: Die Erwartung bindet noch nicht die
+            tatsächlich ausgeführten Live-Runnerbytes, und ein Nachcheck des
+            Kandidatenzustands fehlt. Zusätzlich ist ein Typimport
+            (<code>Mapping</code>) unvollständig. Korrekturrunde 1 baut deshalb
+            einen vorab versiegelten Runner, Vor-/Nach-/In-Run-Schutz und einen
+            Post-Append-Ledgeraudit. Danach müssen alle Gates auf einem neuen
+            Kandidaten vollständig neu laufen. Ein erster
             Lauf ab 13:32 Uhr wurde nach wenigen Minuten beendet und ausdrücklich
             nicht gewertet, weil ihm diese Rohartefakte fehlten. Erst nach den
             vollständigen Gates starten zwei neue Schlussprüfer A und B sowie
@@ -874,7 +881,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T18:56:35+02:00">01.08.2026, 18:56 Uhr MESZ</time>.
+      <time datetime="2026-08-01T21:21:17+02:00">01.08.2026, 21:21 Uhr MESZ</time>.
       Frisch belegt aus Git, den getrennten Arbeitszweigen, den abgeschlossenen
       Testprozessen, den unabhängigen Agentenberichten und den lokal
       gespeicherten Rohlogs.
