@@ -332,8 +332,9 @@
           und zwei übersprungenen Tests; ein zusätzlicher Rechen- oder
           Browserfehler trat nicht auf. Beide roten Runden sind inzwischen
           vollständig committed. Runde 8 läuft neu auf Kandidat
-          <code>93a408e</code>. Diese Seite ist weiterhin ein Zwischenstand und
-          ausdrücklich keine Freigabe.
+          <code>93a408e</code>; ihre zehn kurzen Gates sind inzwischen
+          vollständig grün, Ledger und Vollsuite laufen noch. Diese Seite ist
+          weiterhin ein Zwischenstand und ausdrücklich keine Freigabe.
         </div>
       </div>
 
@@ -348,7 +349,7 @@
         </div>
         <div class="fact">
           <span>Formale Läufe</span>
-          <strong>Runde 8 · drei Spuren laufen</strong>
+          <strong>Runde 8 · 10/12 Gates grün</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -497,14 +498,15 @@
       <div class="grid">
         <article class="panel running">
           <span class="label">Formale Kandidatengates</span>
-          <span class="metric">Runde 8 · drei Spuren laufen</span>
+          <span class="metric">Runde 8 · 10/12 Gates grün</span>
           <p>
-            Vollsuite, Ledger und die kombinierte Browser-/Fokus-/Generator-Spur
-            starteten um 02:46 Uhr in drei getrennten, sauberen Worktrees. Alle
-            stehen auf <code>93a408e/b8bfc5367066</code>, besitzen ihre
-            Abhängigkeiten und meldeten beim Start keine Runnerfehler. Noch ist
-            keiner dieser Läufe als bestanden gewertet; ein Timeout oder
-            Teilresultat zählt nicht als Erfolg.
+            Die kurze Spur ist vollständig grün: Browservertrag 18/18,
+            Fokusprüfung 513/513, 22 Referenzfälle, Domain-, Legacy- und
+            Zeitgenerator, Frozen-Sperren, Kompilierung, exakter Diff und
+            Sauberkeitsstatus. Alle zehn Ergebnisse wurden nochmals gegen
+            Commit, Baum, Befehls-Hash und vorab versiegelte Erwartung geprüft.
+            Ledger und Vollsuite laufen in ihren getrennten Worktrees weiter;
+            ein Timeout oder Teilresultat zählt nicht als Erfolg.
           </p>
         </article>
         <article class="panel running">
@@ -760,7 +762,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T02:49:00+02:00">01.08.2026, 02:49 Uhr MESZ</time>.
+      <time datetime="2026-08-01T02:58:00+02:00">01.08.2026, 02:58 Uhr MESZ</time>.
       Frisch belegt aus Git, drei sauberen abgetrennten Kandidaten-Worktrees,
       den laufenden Prozesszuständen und den lokal gespeicherten Rohlogs.
       Laufende Tests werden nicht vorzeitig als bestanden bezeichnet. Diese
