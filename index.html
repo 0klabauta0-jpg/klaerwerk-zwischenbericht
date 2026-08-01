@@ -362,7 +362,7 @@
         </div>
         <div class="fact">
           <span>Korrekturrunde</span>
-          <strong>Vollsuite läuft seit 13:43 Uhr</strong>
+          <strong>Vollsuite rot · 2 Integrationsfehler</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -593,8 +593,14 @@
             110 Minuten. Der Integrationskandidat <code>f3ca35e</code> ist
             eingefroren; Befehl, Commit und Baum wurden im vorherigen
             Erwartungscommit <code>b62a882</code> versiegelt. Die Vollsuite
-            läuft seit 13:43 Uhr mit getrennten stdout-/stderr-Dateien,
-            vorab angelegtem Startmanifest und echtem Exitcodepfad. Ein erster
+            lief mit getrennten stdout-/stderr-Dateien, vorab angelegtem
+            Startmanifest und echtem Exitcodepfad. Ergebnis:
+            <strong>2 fehlgeschlagen, 4543 bestanden, 2 übersprungen</strong> in
+            2:03:16, Exitcode 1. Ein internes HTML-Artefakt trägt nicht mehr die
+            aktuelle Generator-Quellsignatur; außerdem fehlt das neue private
+            Modul <code>_balance_source_proof</code> im Architekturvertrag. Beide
+            Ursachen werden jetzt fokussiert RED/GREEN behoben, danach braucht
+            ein neuer eingefrorener Kandidat einen vollständigen Neulauf. Ein erster
             Lauf ab 13:32 Uhr wurde nach wenigen Minuten beendet und ausdrücklich
             nicht gewertet, weil ihm diese Rohartefakte fehlten. Erst nach den
             vollständigen Gates starten zwei neue Schlussprüfer A und B sowie
@@ -869,7 +875,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T13:46:59+02:00">01.08.2026, 13:46 Uhr MESZ</time>.
+      <time datetime="2026-08-01T16:35:48+02:00">01.08.2026, 16:35 Uhr MESZ</time>.
       Frisch belegt aus Git, den getrennten Arbeitszweigen, den abgeschlossenen
       Testprozessen, den unabhängigen Agentenberichten und den lokal
       gespeicherten Rohlogs.
