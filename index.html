@@ -323,8 +323,8 @@
           übersprungenen Tests. Chromium übergab den Browser an einen neuen
           Windows-Prozess, während die strenge Besitzprüfung noch den beendeten
           Starter kontrollierte. Kandidat <code>72b71d9</code> verhindert diese
-          Übergabe, ohne die Besitzprüfung zu lockern. Drei vollständige
-          Prüfpfade laufen deshalb erneut.
+          Übergabe, ohne die Besitzprüfung zu lockern. Die kurze Prüfspur ist
+          inzwischen vollständig grün; Vollsuite und Beweisbuch laufen weiter.
           Diese Seite ist weiterhin ein Zwischenstand und ausdrücklich keine
           Freigabe.
         </div>
@@ -341,7 +341,7 @@
         </div>
         <div class="fact">
           <span>Formale Läufe</span>
-          <strong>Runde 7 · 3 Prüfpfade aktiv</strong>
+          <strong>Runde 7 · 10/12 Gates grün</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -395,14 +395,14 @@
       <h2>Was nachweisbar erledigt ist</h2>
       <div class="grid">
         <article class="panel good">
-          <span class="label">Paket 00 bis Paket 05</span>
+          <span class="label">Task-4R-Bausteine 0 bis 5</span>
           <span class="metric">6 Baustufen</span>
           <p>
-            Paket 00 schützt die Nachweiskette. Paket 01 trennt physische von
-            abgeleiteten Werten. Danach kamen dimensionssichere Inventare,
-            Wasser und Nassschlamm, Gas und Energie sowie die globale Regel
-            „jede physische Quelle genau einmal“. Die Arbeit ist also größer
-            geworden als die ursprünglichen ersten beiden Pakete.
+            Innerhalb der reparierten Bilanzgrundlage schützt Task 0 die
+            Nachweiskette. Danach folgen physische und abgeleitete Werte,
+            dimensionssichere Inventare, Wasser und Nassschlamm, Gas und Energie
+            sowie die Regel „jede physische Quelle genau einmal“. Das schließt
+            Task 4R-A ab, aber noch nicht das gesamte Paket 01.
           </p>
         </article>
         <article class="panel good">
@@ -489,11 +489,12 @@
           <span class="label">Formale Kandidatengates</span>
           <span class="metric">Runde 7 läuft</span>
           <p>
-            Vollsuite, Beweisbuch und Fokusprüfung laufen parallel in getrennten
-            Worktrees. Der neue Browservertrag ist bereits 18 von 18 grün.
-            Danach folgen Referenzen, drei Generatoren, Frozen-Sperren,
-            Kompilierung, exakter Git-Diff und Sauberkeitsstatus. Ein Timeout
-            oder Teilresultat wird nicht als bestanden gewertet.
+            Die kurze Spur ist vollständig beendet: Browservertrag 18/18,
+            Fokusprüfung 513/513 sowie Referenzen, drei Generatoren,
+            Frozen-Sperren, Kompilierung, exakter Git-Diff und Sauberkeitsstatus
+            sind grün. Vollsuite und Beweisbuch laufen weiterhin in getrennten
+            Worktrees. Ein Timeout oder Teilresultat wird nicht als bestanden
+            gewertet.
           </p>
         </article>
         <article class="panel running">
@@ -623,6 +624,15 @@
           </p>
         </article>
         <article class="panel open">
+          <h3>Paket-01-Aufgaben 5 bis 7</h3>
+          <p>
+            Nach dem Task-4R-A-Bericht fehlen noch die typisierten Gas- und
+            Energieprojektionen, die anlagenweite Aggregation mit externer
+            Legacy-Parität und die vollständige Paketabnahme. Erst deren eigene
+            Tests und unabhängigen Reviews erlauben die Zusammenführung.
+          </p>
+        </article>
+        <article class="panel open">
           <h3>Backup, Merge und Onlinegang</h3>
           <p>
             Der alte Hauptstand ist noch nicht gesichert, der Arbeitszweig noch
@@ -690,6 +700,21 @@
           vollständigen Post-Report-Gates ausführen.
         </li>
         <li>
+          Paket 01 Task 5 umsetzen: Gas und Energie als typisierte Projektionen
+          anbinden, die vorläufigen <code>unbalanced_*</code>-Ausnahmen entfernen
+          und alle Gasports, CH4, CO2, Strom, Wärme und Verluste prüfen.
+        </li>
+        <li>
+          Paket 01 Task 6 umsetzen: fertige Einzelbilanzen ohne künstlichen
+          Gesamtstatus zum Anlagenbericht aggregieren und alle sechs
+          Pflichtfälle gegen das unabhängige Legacy-Orakel vergleichen.
+        </li>
+        <li>
+          Paket 01 Task 7 abschließen: Paketabnahme, unabhängige Paketreview,
+          vollständige Tests und den eigentlichen Gesamt-Abschlussbericht für
+          Nicht-Programmierer und Fachleser erzeugen.
+        </li>
+        <li>
           Den alten <code>main</code>-Stand sichern, lokal zusammenführen und
           die zusammengeführte App einschließlich Detailkarten, Zeitkarten,
           API und Mobilansicht erneut prüfen.
@@ -703,24 +728,26 @@
 
       <div class="callout warning">
         <strong>Wann sind wir am Ziel?</strong> Im fundfreien Fall sind noch
-        mehrere Prüf-, Berichts-, Merge- und Live-Blöcke nötig. Schon ein
-        einzelner Volltest benötigte zuletzt rund 109 Minuten; deshalb sind
-        weitere Stunden Maschinenzeit realistisch, nicht Minuten. Ein seriöser
-        Fertigtermin ist erst nach den beiden Gesamtprüfungen möglich. Jeder
-        neue reproduzierbare Befund verlängert die Arbeit bewusst.
+        mehrere Prüf-, Implementierungs-, Berichts-, Merge- und Live-Blöcke
+        nötig. Schon ein einzelner Volltest benötigte zuletzt rund 109 Minuten;
+        deshalb sind weitere Stunden bis mehrere Arbeitsetappen realistisch,
+        nicht Minuten. Ein seriöser Fertigtermin ist erst nach den beiden
+        Task-4R-Gesamtprüfungen und der ersten Aufwandssichtung für Task 5
+        möglich. Jeder neue reproduzierbare Befund verlängert die Arbeit bewusst.
       </div>
       <div class="callout">
         <strong>Das technische Ziel ist erreicht, wenn:</strong> zwei frische
-        Gesamtprüfer 0/0/0 melden, der Abschlussbericht vollständig und
-        browsergeprüft ist, der lokale Merge seine vollständigen Tests besteht
-        und lokale sowie ausgelieferte Dateien nach Push und Deployment
-        übereinstimmen.
+        Task-4R-Gesamtprüfer 0/0/0 melden, die Paket-01-Tasks 5 bis 7 mit ihren
+        eigenen Reviews abgeschlossen sind, der Gesamt-Abschlussbericht
+        vollständig und browsergeprüft ist, der lokale Merge seine vollständigen
+        Tests besteht und lokale sowie ausgelieferte Dateien nach Push und
+        Deployment übereinstimmen.
       </div>
     </section>
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T01:35:00+02:00">01.08.2026, 01:35 Uhr MESZ</time>.
+      <time datetime="2026-08-01T02:05:00+02:00">01.08.2026, 02:05 Uhr MESZ</time>.
       Frisch belegt aus Git, drei sauberen abgetrennten Kandidaten-Worktrees,
       den laufenden Prozesszuständen und den lokal gespeicherten Rohlogs.
       Laufende Tests werden nicht vorzeitig als bestanden bezeichnet. Diese
