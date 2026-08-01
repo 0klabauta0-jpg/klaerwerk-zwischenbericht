@@ -317,7 +317,7 @@
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Pakete 1 und 2 sind unabhängig freigegeben; Paket 3 läuft.</strong>
+          <strong>Pakete 1 bis 3 sind unabhängig freigegeben; Paket 4 läuft.</strong>
           Runde 8 bestand zwar alle zwölf Maschinengates, fiel aber mit
           <strong>2 kritischen und 5 wichtigen Befunden</strong> durch zwei
           Blindprüfungen. Dieser Fehlschlag ist jetzt unverändert in
@@ -334,24 +334,29 @@
           Prozesswechsel und eine falsche Produktionsabhängigkeit. Der
           endgültige Paket-2-Diff <code>ba02b24</code> wurde mit
           <strong>0 kritisch / 0 wichtig / 0 klein</strong> freigegeben.
-          Paket 3 ersetzt jetzt freie Laufbehauptungen durch gehashte
-          Beobachtungsmanifeste. Diese Seite bleibt ein Zwischenstand und
-          ausdrücklich keine Gesamtfreigabe.
+          Paket 3 ersetzt freie Laufbehauptungen durch gehashte
+          Beobachtungsmanifeste und maschinenlesbare Entscheidungen. Nach einer
+          Korrekturrunde wurden alle vier wichtigen und der kleinere
+          Reviewbefund geschlossen; der Fix-Diff erhielt
+          <strong>0 kritisch / 0 wichtig / 0 klein</strong>. Paket 4 baut nun
+          den Abschlussvertrag, der exakt zwei frische unabhängige
+          Null-Befund-Reviews desselben Kandidaten verlangt. Diese Seite bleibt
+          ein Zwischenstand und ausdrücklich keine Gesamtfreigabe.
         </div>
       </div>
 
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>codex/task4r-round9-fixes · ba02b24</strong>
+          <strong>codex/task4r-round9-fixes · ef0eda4</strong>
         </div>
         <div class="fact">
           <span>Aktueller Arbeitsstand</span>
-          <strong>Pakete 1 und 2 freigegeben</strong>
+          <strong>Pakete 1 bis 3 freigegeben</strong>
         </div>
         <div class="fact">
           <span>Korrekturrunde</span>
-          <strong>Paket 3 in Arbeit</strong>
+          <strong>Paket 4 in Arbeit</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -536,16 +541,35 @@
             letzten Fix-Diff ohne offenen Befund.
           </p>
         </article>
-        <article class="panel running">
+        <article class="panel good">
           <span class="label">Round 9 · Paket 3</span>
+          <span class="metric">freigegeben · 0/0/0</span>
+          <p>
+            Ein Satz wie „731 Tests bestanden“ ist künftig kein Nachweis mehr.
+            Paket 3 bindet Befehl, echten Git-Commit und -Baum, Zeitfolge,
+            Exitcode, Ergebniszähler sowie stdout/stderr-Dateien und ihre Hashes
+            in ein geschlossenes Beobachtungsmanifest. Die vier alten
+            v1-Abschlüsse bleiben sichtbar, zählen aber nur als historisch
+            ungebundene Angaben. Die Nachprüfung schloss vier wichtige und einen
+            kleineren Befund; der endgültige Commit <code>ef0eda4</code> wurde
+            ohne neuen Befund freigegeben. Der zuvor offene echte Ledger-Lauf
+            bestand in 1:30:55. Einschränkung: Für diesen langen Lauf wurde kein
+            separates Roh-Log gespeichert; Befehl, Ergebnis, Laufzeit und
+            Zeitspur sind plausibel und korrekt begrenzt, aber nicht unabhängig
+            aus einer eigenen Logdatei authentifizierbar.
+          </p>
+        </article>
+        <article class="panel running">
+          <span class="label">Round 9 · Paket 4</span>
           <span class="metric">Implementierung läuft</span>
           <p>
-            Ein Satz wie „731 Tests bestanden“ darf künftig kein Nachweis mehr
-            sein. Paket 3 bindet Befehl, Commit, Laufzeit, Exitcode,
-            Ergebniszähler sowie stdout/stderr-Dateien und ihre Hashes in ein
-            geschlossenes Beobachtungsmanifest. Die vier alten v1-Abschlüsse
-            bleiben sichtbar, zählen aber nur noch als historisch ungebundene
-            Angaben. Noch gibt es hierzu keinen fertigen Commit oder Review.
+            Der Abschlussstichtag soll künftig nur noch gelten, wenn exakt zwei
+            verschiedene Prüfer denselben unveränderten Kandidaten frisch mit
+            0/0/0 freigeben. Null, eine oder drei Prüfungen, doppelte Prüfer oder
+            Dateien, alte Kandidaten und bereits ersetzte Reviews müssen
+            geschlossen abgewiesen werden. Die RED/GREEN-Umsetzung hat begonnen;
+            ein fertiger Paket-4-Commit oder unabhängiges Review liegt noch nicht
+            vor.
           </p>
         </article>
         <article class="panel good">
@@ -612,8 +636,8 @@
         </article>
       </div>
       <div class="callout warning">
-        <strong>Ehrliche Grenze:</strong> Zwei Korrekturpakete sind
-        freigegeben, die versionierten Abschluss- und Laufnachweise sind noch
+        <strong>Ehrliche Grenze:</strong> Drei Korrekturpakete sind
+        freigegeben; der versionierte Zwei-Prüfer-Abschlussnachweis ist noch
         offen. Danach müssen alle formalen Gates, die
         Vollsuite, Browserprüfungen und zwei frische Gesamtprüfer auf demselben
         unveränderlichen Kandidaten erneut grün werden. Erst das wäre eine
@@ -815,7 +839,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T08:52:30+02:00">01.08.2026, 08:52 Uhr MESZ</time>.
+      <time datetime="2026-08-01T12:09:38+02:00">01.08.2026, 12:09 Uhr MESZ</time>.
       Frisch belegt aus Git, den getrennten Arbeitszweigen, den abgeschlossenen
       Testprozessen, den unabhängigen Agentenberichten und den lokal
       gespeicherten Rohlogs.
