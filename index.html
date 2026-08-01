@@ -354,7 +354,7 @@
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>codex/task4r-round9-fixes · 0873c43</strong>
+          <strong>Kandidat f3ca35e · Erwartung b62a882</strong>
         </div>
         <div class="fact">
           <span>Aktueller Arbeitsstand</span>
@@ -362,7 +362,7 @@
         </div>
         <div class="fact">
           <span>Korrekturrunde</span>
-          <strong>Paket 5 in Arbeit</strong>
+          <strong>Vollsuite läuft seit 13:43 Uhr</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -590,9 +590,15 @@
             Frozen- und Referenzsperren, Generatoren, Browservertrag, der
             komplette pytest-Lauf und der vollständige Beweisbuch-Test. Die
             beiden langen Läufe benötigen erfahrungsgemäß jeweils etwa 90 bis
-            110 Minuten und bekommen diesmal getrennte stdout-/stderr-,
-            Exitcode-, Zeit- und Hash-Artefakte. Erst danach starten zwei neue
-            Schlussprüfer A und B sowie ein zusätzlicher Null-Befund-Durchlauf.
+            110 Minuten. Der Integrationskandidat <code>f3ca35e</code> ist
+            eingefroren; Befehl, Commit und Baum wurden im vorherigen
+            Erwartungscommit <code>b62a882</code> versiegelt. Die Vollsuite
+            läuft seit 13:43 Uhr mit getrennten stdout-/stderr-Dateien,
+            vorab angelegtem Startmanifest und echtem Exitcodepfad. Ein erster
+            Lauf ab 13:32 Uhr wurde nach wenigen Minuten beendet und ausdrücklich
+            nicht gewertet, weil ihm diese Rohartefakte fehlten. Erst nach den
+            vollständigen Gates starten zwei neue Schlussprüfer A und B sowie
+            ein zusätzlicher Null-Befund-Durchlauf.
           </p>
         </article>
         <article class="panel good">
@@ -863,7 +869,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T12:58:55+02:00">01.08.2026, 12:58 Uhr MESZ</time>.
+      <time datetime="2026-08-01T13:46:59+02:00">01.08.2026, 13:46 Uhr MESZ</time>.
       Frisch belegt aus Git, den getrennten Arbeitszweigen, den abgeschlossenen
       Testprozessen, den unabhängigen Agentenberichten und den lokal
       gespeicherten Rohlogs.
