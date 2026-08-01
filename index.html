@@ -317,46 +317,36 @@
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Runde 8 besteht alle Maschinen-Gates, ist nach den Blindprüfungen aber nicht freigegeben.</strong>
-          Auf <code>b35006e</code> waren zehn Abschlussgates grün. Die Vollsuite
-          endete jedoch mit 4.354 bestandenen, einem fehlgeschlagenen und zwei
-          übersprungenen Tests. Chromium übergab den Browser an einen neuen
-          Windows-Prozess, während die strenge Besitzprüfung noch den beendeten
-          Starter kontrollierte. Kandidat <code>72b71d9</code> verhindert diese
-          Übergabe, ohne die Besitzprüfung zu lockern. Die zehn kurzen Gates
-          sind vollständig grün. Das Beweisbuch endete jedoch mit 157
-          bestandenen und einer fehlgeschlagenen Prüfung, weil die bereits
-          erstellte Abschlussakte der gescheiterten Runde 6 noch nicht im
-          sauberen Prüf-Commit enthalten war. Der Runde-7-Volltest bestätigte
-          dieselbe einzelne Lücke mit 4.354 bestandenen, einem fehlgeschlagenen
-          und zwei übersprungenen Tests; ein zusätzlicher Rechen- oder
-          Browserfehler trat nicht auf. Beide roten Runden sind inzwischen
-          vollständig committed. Runde 8 lief neu auf Kandidat
-          <code>93a408e</code>; alle zwölf formalen Gates sind nun vollständig
-          grün. Das Beweisbuch bestand 158/158 Prüfungen in 4.750,91 Sekunden,
-          die Vollsuite 4.355 Tests mit zwei planmäßig übersprungenen Prüfungen
-          in 6.324,41 Sekunden. Die zwei neuen unabhängigen Prüfer fanden danach
-          zusammen <strong>2 kritische und 5 wichtige Lücken</strong>. Unter anderem
-          konnten Werte und Quellen eines Bilanzobjekts lokal neu abgestempelt
-          werden; außerdem waren Gaszusammensetzung und Abschlussnachweise noch
-          nicht streng genug geschützt. Alle sieben Hinweise wurden unabhängig
-          reproduziert. Eine neue testgetriebene Korrekturrunde läuft. Diese Seite ist
-          weiterhin ein Zwischenstand und ausdrücklich keine Freigabe.
+          <strong>Paket 1 der Korrekturrunde ist unabhängig freigegeben; Paket 2 läuft.</strong>
+          Runde 8 bestand zwar alle zwölf Maschinengates, fiel aber mit
+          <strong>2 kritischen und 5 wichtigen Befunden</strong> durch zwei
+          Blindprüfungen. Dieser Fehlschlag ist jetzt unverändert in
+          <code>bcad04a</code> dokumentiert; der frisch wiederholte Ledger-Test
+          bestand 158/158 Prüfungen in 1:36:05. Paket 1 schließt die fälschbare
+          Herkunft von Wasser-, Gas- und Energiequellen sowie unvollständige
+          Gaszusammensetzungsregeln. Nach einem ersten Reviewbefund wurden die
+          fehlenden Gegenbeispiele ergänzt. Der unabhängige Nachprüfer gab den
+          endgültigen Diff mit <strong>0 kritisch / 0 wichtig / 0 klein</strong>
+          frei. Der zusammengeführte Paket-1-Stand <code>c73c609</code> bestand
+          danach 263/263 gezielte Integrationstests. Paket 2 härtet nun die
+          kompletten Wasser-, Schlamm-, Gas- und Dispositionsprojektionen.
+          Diese Seite bleibt ein Zwischenstand und ausdrücklich keine
+          Gesamtfreigabe.
         </div>
       </div>
 
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>codex/strangler-bilanzen · 702565f</strong>
+          <strong>codex/task4r-round9-fixes · c73c609</strong>
         </div>
         <div class="fact">
-          <span>Geprüfter Kandidat</span>
-          <strong>93a408e</strong>
+          <span>Aktueller Arbeitsstand</span>
+          <strong>Paket 1 freigegeben</strong>
         </div>
         <div class="fact">
-          <span>Formale Läufe</span>
-          <strong>12/12 grün · Review rot</strong>
+          <span>Korrekturrunde</span>
+          <strong>Paket 2 in Arbeit</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -514,14 +504,41 @@
       <h2>Aktueller Haltepunkt</h2>
       <div class="grid">
         <article class="panel good">
-          <span class="label">Formale Kandidatengates</span>
-          <span class="metric">Runde 8 · 12/12 Gates grün</span>
+          <span class="label">Round 9 · Paket 1</span>
+          <span class="metric">freigegeben · 0/0/0</span>
+          <p>
+            Die neue private Herkunftsbindung verhindert, dass ein Aufrufer
+            erfundene Wasser-, Gas- oder Energieterme nachträglich an ein
+            Bilanzobjekt hängt. Für Gas gelten die Regeln nun für Anfangs- und
+            Endinventar sowie Ein- und Ausgänge: CH4 und CO2 dürfen den
+            bekannten Gesamtgasstrom weder einzeln noch gemeinsam
+            überschreiten. Nach 19 echten Vorher-Gegenbeispielen bestanden
+            263 gezielte Tests; der unabhängige Reviewer bestätigte den
+            endgültigen Task-Diff ohne neuen Befund.
+          </p>
+        </article>
+        <article class="panel running">
+          <span class="label">Round 9 · Paket 2</span>
+          <span class="metric">Implementierung läuft</span>
+          <p>
+            Der nächste Schritt schützt die elf zusammengehörigen
+            Authority-Felder als ein Ganzes. Zusätzlich wird jede sichtbare
+            Wasser-, Schlamm-, Gas- und Dispositionszeile unmittelbar mit dem
+            bereits physisch geprüften Quellstrom verglichen. Noch gibt es
+            hierzu keinen fertigen Commit und keinen grünen Review; beides
+            bleibt bis zum echten Abschluss offen.
+          </p>
+        </article>
+        <article class="panel good">
+          <span class="label">Dokumentierte Ausgangslage</span>
+          <span class="metric">Runde 8 · Maschinen grün, Review rot</span>
           <p>
             Die kurze Spur ist vollständig grün: Browservertrag 18/18,
             Fokusprüfung 513/513, 22 Referenzfälle, Domain-, Legacy- und
             Zeitgenerator, Frozen-Sperren, Kompilierung, exakter Diff und
             Sauberkeitsstatus. Das Beweisbuch bestand zusätzlich 158/158
-            Prüfungen in 4.750,91 Sekunden. Die vollständige Suite bestand
+            Prüfungen zunächst in 4.750,91 Sekunden und beim aktuellen
+            Integritätslauf erneut in 5.765,23 Sekunden. Die vollständige Suite bestand
             4.355 Tests, übersprang zwei planmäßig und benötigte 6.324,41
             Sekunden. Alle zwölf Ergebnisse wurden gegen Commit, Baum,
             Befehls-Hash und vorab versiegelte Erwartung geprüft.
@@ -554,11 +571,11 @@
           <span class="label">Sicherer Wiederanlaufpunkt</span>
           <span class="metric">vollständig gespeichert</span>
           <p>
-            Browserfix <code>72b71d9</code>, beide Abschlussakten
-            <code>76694f2/93a408e</code>, Erwartungscommit <code>702565f</code>,
-            drei saubere Kandidaten-Worktrees und getrennte Rohlogpfade liegen
-            auf der Festplatte. Hauptzweig, Firebase und Vercel wurden weiterhin
-            nicht verändert.
+            Round-8-Fehlakte <code>bcad04a</code>, Paket-1-Commits
+            <code>0182a87/e493279</code>, Merge <code>c73c609</code>, die
+            Agentenberichte, Review-Diffs und getrennten Rohlogs liegen auf der
+            Festplatte. Hauptzweig, Firebase und Vercel wurden weiterhin nicht
+            verändert.
           </p>
         </article>
         <article class="panel info">
@@ -576,13 +593,13 @@
         </article>
       </div>
       <div class="callout warning">
-        <strong>Ehrliche Grenze:</strong> Runde 6 ist wegen eines Fehlers in der
-        Vollsuite nicht freigegeben. Runde 7 hat den Browserfix in zehn Gates
-        bestätigt, aber zugleich eine formale Lücke in der Nachweiskette
-        offengelegt. Darum wurde auch <code>72b71d9</code> nicht freigegeben.
-        Die Ursache ist jetzt committed, und Runde 8 prüft den daraus
-        entstandenen Kandidaten vollständig neu. Die unabhängige
-        Null-Befund-Schleife bleibt danach weiterhin offen.
+        <strong>Ehrliche Grenze:</strong> Paket 1 ist nur ein Teil der sieben
+        Round-8-Befunde. Paket 2 sowie die versionierten Abschluss- und
+        Laufnachweise sind noch offen. Danach müssen alle formalen Gates, die
+        Vollsuite, Browserprüfungen und zwei frische Gesamtprüfer auf demselben
+        unveränderlichen Kandidaten erneut grün werden. Erst das wäre eine
+        Task-4R-Freigabe; eine Freigabe für Merge und Onlinegang ist es noch
+        nicht.
       </div>
     </section>
 
@@ -702,20 +719,20 @@
       <h2>Die nächsten Schritte bis zum Ziel</h2>
       <ol class="checklist">
         <li>
-          Die sieben bestätigten Reviewbefunde in getrennten RED/GREEN-Paketen
-          beheben: zuerst Gas- und Owner-Invarianten, dann Authority-Projektionen
-          und zuletzt die Abschluss- und Laufnachweise.
+          <strong>Erledigt:</strong> Gas-, Owner- und
+          Quellenherkunfts-Invarianten mit echten Vorher-Gegenbeispielen,
+          vollständigen Grenzfällen und unabhängigem 0/0/0-Review schließen.
         </li>
         <li>
-          Für jeden Befund zuerst ein scheiterndes Gegenbeispiel festschreiben,
-          dann die kleinste robuste Korrektur umsetzen und angrenzende
-          Mutationstests ergänzen. Danach müssen alle formalen Gates und beide
-          Gesamtprüfungen erneut von vorn beginnen.
+          <strong>Läuft:</strong> Authority-Projektionen als vollständiges,
+          privat signiertes Paket binden und Wasser, Schlamm, Gas sowie
+          Disposition gegen die echte Quelle prüfen. Danach folgt ein eigener
+          unabhängiger Task-Review.
         </li>
         <li>
-          Bei zweimal 0/0/0 die beiden Prüfberichte, ihre Manifeste und die
-          zwölf neuen Befehlsnachweise in einem sauberen Vor-Bericht-Commit
-          binden.
+          Anschließend freie Laufbehauptungen durch gehashte
+          Beobachtungsmanifeste ersetzen und einen Berichtsschnitt nur noch mit
+          exakt zwei frischen unabhängigen 0/0/0-Prüfungen zulassen.
         </li>
         <li>
           Zuerst rote Berichtstests schreiben, dann den großen deutschen
@@ -779,9 +796,10 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T04:34:00+02:00">01.08.2026, 04:34 Uhr MESZ</time>.
-      Frisch belegt aus Git, drei sauberen abgetrennten Kandidaten-Worktrees,
-      den laufenden Prozesszuständen und den lokal gespeicherten Rohlogs.
+      <time datetime="2026-08-01T06:46:33+02:00">01.08.2026, 06:46 Uhr MESZ</time>.
+      Frisch belegt aus Git, den getrennten Arbeitszweigen, den abgeschlossenen
+      Testprozessen, den unabhängigen Agentenberichten und den lokal
+      gespeicherten Rohlogs.
       Laufende Tests werden nicht vorzeitig als bestanden bezeichnet. Diese
       separate Berichtseite verändert weder die Klärwerk-App noch Firebase
       oder Vercel.
