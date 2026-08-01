@@ -317,7 +317,7 @@
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Runde 8 ist formal vollständig grün; zwei Blindprüfungen laufen.</strong>
+          <strong>Runde 8 besteht alle Maschinen-Gates, ist nach den Blindprüfungen aber nicht freigegeben.</strong>
           Auf <code>b35006e</code> waren zehn Abschlussgates grün. Die Vollsuite
           endete jedoch mit 4.354 bestandenen, einem fehlgeschlagenen und zwei
           übersprungenen Tests. Chromium übergab den Browser an einen neuen
@@ -331,12 +331,16 @@
           dieselbe einzelne Lücke mit 4.354 bestandenen, einem fehlgeschlagenen
           und zwei übersprungenen Tests; ein zusätzlicher Rechen- oder
           Browserfehler trat nicht auf. Beide roten Runden sind inzwischen
-          vollständig committed. Runde 8 läuft neu auf Kandidat
+          vollständig committed. Runde 8 lief neu auf Kandidat
           <code>93a408e</code>; alle zwölf formalen Gates sind nun vollständig
           grün. Das Beweisbuch bestand 158/158 Prüfungen in 4.750,91 Sekunden,
           die Vollsuite 4.355 Tests mit zwei planmäßig übersprungenen Prüfungen
-          in 6.324,41 Sekunden. Zwei neue unabhängige Prüfer versuchen jetzt,
-          den Kandidaten gezielt zu widerlegen. Diese Seite ist
+          in 6.324,41 Sekunden. Die zwei neuen unabhängigen Prüfer fanden danach
+          zusammen <strong>2 kritische und 5 wichtige Lücken</strong>. Unter anderem
+          konnten Werte und Quellen eines Bilanzobjekts lokal neu abgestempelt
+          werden; außerdem waren Gaszusammensetzung und Abschlussnachweise noch
+          nicht streng genug geschützt. Alle sieben Hinweise wurden unabhängig
+          reproduziert. Eine neue testgetriebene Korrekturrunde läuft. Diese Seite ist
           weiterhin ein Zwischenstand und ausdrücklich keine Freigabe.
         </div>
       </div>
@@ -352,7 +356,7 @@
         </div>
         <div class="fact">
           <span>Formale Läufe</span>
-          <strong>Runde 8 · 12/12 Gates grün</strong>
+          <strong>12/12 grün · Review rot</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -494,6 +498,16 @@
         <code>93a408e</code>; Commit <code>702565f</code> bindet vor dem Start
         die zwölf neuen Erwartungen für Runde 8 an exakt <code>93a408e</code>.
       </div>
+      <div class="callout">
+        <strong>Warum grüne Tests hier nicht das Ende waren:</strong> Die vorhandenen
+        Tests bewiesen, dass bekannte, unveränderte Daten korrekt verarbeitet
+        werden. Die Blindprüfer bauten zusätzlich gezielte Gegenbeispiele. Dabei
+        ließ sich ein Bilanzobjekt mit geändertem Wert oder fremder Quelle neu
+        versiegeln, und einige Beweisbuch-Regeln akzeptierten zu schwache
+        Abschlussnachweise. Genau dafür gibt es die unabhängigen Reviews nach der
+        Vollsuite: Sie haben verhindert, dass ein nur scheinbar fertiger Stand
+        weitergereicht wird.
+      </div>
     </section>
 
     <section id="laeuft">
@@ -515,22 +529,25 @@
         </article>
         <article class="panel running">
           <span class="label">Gesamtprüfung A</span>
-          <span class="metric">Prüfer A läuft</span>
+          <span class="metric">2 kritisch · 1 wichtig</span>
           <p>
-            Der neue Prüfer <code>019fbb2c…8eb6</code> arbeitet in einer eigenen
-            sauberen Kandidatenkopie. Er greift Wasser-, Stoff-, Schlamm-, Gas-
-            und Energiebilanzen, Owner-Zuordnung, Mehrfachbuchungen und
-            Quellenherkunft unabhängig von früheren Berichten an.
+            Prüfer <code>019fbb2c…8eb6</code> zeigte in einer sauberen
+            Kandidatenkopie, dass Wasser-, Nassschlamm-, Gas- und Energiewerte
+            mit einer frischen lokalen Versiegelung verändert werden konnten.
+            Auch fremde Herleitungsquellen sowie vier ausgegebene
+            Authority-Projektionen waren nicht an allen Schutzgrenzen gebunden.
+            Alle drei Gegenbeispiele wurden von der Hauptprüfung reproduziert.
           </p>
         </article>
         <article class="panel running">
           <span class="label">Gesamtprüfung B</span>
-          <span class="metric">Prüfer B läuft</span>
+          <span class="metric">0 kritisch · 4 wichtig</span>
           <p>
-            Der neue Prüfer <code>019fbb2c…b152</code> untersucht unabhängig
-            Einheiten, Zeitintervalle, Snapshot-/Horizonttrennung, Frozen-
-            Generatoren, Beweisbuch, Testorakel und Browserverträge. Er kennt
-            die alten Reviewberichte ausdrücklich nicht.
+            Prüfer <code>019fbb2c…b152</code> fand zwei Gas-Invarianten sowie zwei
+            Lücken im Beweisbuch: CH4 plus CO2 konnte einen Gesamtgasstrom
+            überschreiten, ein Berichtsschnitt brauchte formal keine zwei
+            Prüfer, und freie Texte konnten Laufresultate behaupten. Auch diese
+            vier Gegenbeispiele wurden unabhängig bestätigt.
           </p>
         </article>
         <article class="panel info">
@@ -685,14 +702,15 @@
       <h2>Die nächsten Schritte bis zum Ziel</h2>
       <ol class="checklist">
         <li>
-          Die zwei laufenden unabhängigen Gesamtprüfungen vollständig beenden.
-          Frühere Prüfergebnisse werden nicht als Bestätigung des Kandidaten
-          wiederverwendet.
+          Die sieben bestätigten Reviewbefunde in getrennten RED/GREEN-Paketen
+          beheben: zuerst Gas- und Owner-Invarianten, dann Authority-Projektionen
+          und zuletzt die Abschluss- und Laufnachweise.
         </li>
         <li>
-          Jeden neuen reproduzierbaren Befund mit eigener ID, rotem
-          Regressionstest und begrenzter Korrektur schließen. Danach müssen
-          beide Gesamtprüfungen erneut von vorn beginnen.
+          Für jeden Befund zuerst ein scheiterndes Gegenbeispiel festschreiben,
+          dann die kleinste robuste Korrektur umsetzen und angrenzende
+          Mutationstests ergänzen. Danach müssen alle formalen Gates und beide
+          Gesamtprüfungen erneut von vorn beginnen.
         </li>
         <li>
           Bei zweimal 0/0/0 die beiden Prüfberichte, ihre Manifeste und die
