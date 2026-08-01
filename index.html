@@ -354,7 +354,7 @@
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>Kandidat f3ca35e · Erwartung b62a882</strong>
+          <strong>Kandidat ddeb613 · Erwartung 4083811</strong>
         </div>
         <div class="fact">
           <span>Aktueller Arbeitsstand</span>
@@ -362,7 +362,7 @@
         </div>
         <div class="fact">
           <span>Korrekturrunde</span>
-          <strong>Vollsuite rot · 2 Integrationsfehler</strong>
+          <strong>Vollsuite grün · Ledger-Gate läuft</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -590,17 +590,16 @@
             Frozen- und Referenzsperren, Generatoren, Browservertrag, der
             komplette pytest-Lauf und der vollständige Beweisbuch-Test. Die
             beiden langen Läufe benötigen erfahrungsgemäß jeweils etwa 90 bis
-            110 Minuten. Der Integrationskandidat <code>f3ca35e</code> ist
-            eingefroren; Befehl, Commit und Baum wurden im vorherigen
-            Erwartungscommit <code>b62a882</code> versiegelt. Die Vollsuite
-            lief mit getrennten stdout-/stderr-Dateien, vorab angelegtem
-            Startmanifest und echtem Exitcodepfad. Ergebnis:
-            <strong>2 fehlgeschlagen, 4543 bestanden, 2 übersprungen</strong> in
-            2:03:16, Exitcode 1. Ein internes HTML-Artefakt trägt nicht mehr die
-            aktuelle Generator-Quellsignatur; außerdem fehlt das neue private
-            Modul <code>_balance_source_proof</code> im Architekturvertrag. Beide
-            Ursachen werden jetzt fokussiert RED/GREEN behoben, danach braucht
-            ein neuer eingefrorener Kandidat einen vollständigen Neulauf. Ein erster
+            110 Minuten. Der erste Integrationskandidat <code>f3ca35e</code>
+            scheiterte nach 2:03:16 an zwei echten Integrationsfehlern. Beide
+            Ursachen wurden fokussiert behoben und die rote Observation bleibt
+            separat erhalten. Der neue Kandidat <code>ddeb613</code> und sein
+            Baum wurden im Erwartungscommit <code>4083811</code> versiegelt.
+            Seine vollständige Suite bestand
+            <strong>4546 Tests, 2 planmäßige Skips, 0 Fehler</strong> in 2:28:11;
+            getrennte Rohlogs, Exitcode 0 und Hashmetadaten sind vorhanden. Seit
+            18:50 Uhr läuft nun der ebenfalls versiegelte vollständige
+            Ledger-/Hardening-/Abschlussgate mit erwarteten 196 Prüfungen. Ein erster
             Lauf ab 13:32 Uhr wurde nach wenigen Minuten beendet und ausdrücklich
             nicht gewertet, weil ihm diese Rohartefakte fehlten. Erst nach den
             vollständigen Gates starten zwei neue Schlussprüfer A und B sowie
@@ -875,7 +874,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T16:35:48+02:00">01.08.2026, 16:35 Uhr MESZ</time>.
+      <time datetime="2026-08-01T18:56:35+02:00">01.08.2026, 18:56 Uhr MESZ</time>.
       Frisch belegt aus Git, den getrennten Arbeitszweigen, den abgeschlossenen
       Testprozessen, den unabhängigen Agentenberichten und den lokal
       gespeicherten Rohlogs.
