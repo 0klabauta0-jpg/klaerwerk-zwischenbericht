@@ -317,7 +317,7 @@
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Pakete 1 bis 3 sind unabhängig freigegeben; Paket 4 läuft.</strong>
+          <strong>Pakete 1 bis 4 sind unabhängig freigegeben; Paket 5 läuft.</strong>
           Runde 8 bestand zwar alle zwölf Maschinengates, fiel aber mit
           <strong>2 kritischen und 5 wichtigen Befunden</strong> durch zwei
           Blindprüfungen. Dieser Fehlschlag ist jetzt unverändert in
@@ -338,25 +338,31 @@
           Beobachtungsmanifeste und maschinenlesbare Entscheidungen. Nach einer
           Korrekturrunde wurden alle vier wichtigen und der kleinere
           Reviewbefund geschlossen; der Fix-Diff erhielt
-          <strong>0 kritisch / 0 wichtig / 0 klein</strong>. Paket 4 baut nun
-          den Abschlussvertrag, der exakt zwei frische unabhängige
-          Null-Befund-Reviews desselben Kandidaten verlangt. Diese Seite bleibt
-          ein Zwischenstand und ausdrücklich keine Gesamtfreigabe.
+          <strong>0 kritisch / 0 wichtig / 0 klein</strong>. Paket 4 baut den
+          Abschlussvertrag, der exakt zwei frische unabhängige
+          Null-Befund-Reviews desselben Kandidaten verlangt. Sein erster Review
+          fand noch eine gemeinsam umbindbare Alt-Kandidatenkette. Der Fix
+          verankert den erwarteten Kandidaten nun von außen und verlangt den
+          Bericht bereits als Datei in genau diesem Commit; der scoped
+          Nachreview meldete <strong>0/0/0</strong>. Paket 5 friert jetzt den
+          Gesamtkandidaten ein und führt kurze sowie mehrstündige Gates mit
+          eigenen Rohlogs aus. Diese Seite bleibt ausdrücklich keine
+          Gesamtfreigabe.
         </div>
       </div>
 
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>codex/task4r-round9-fixes · ef0eda4</strong>
+          <strong>codex/task4r-round9-fixes · 0873c43</strong>
         </div>
         <div class="fact">
           <span>Aktueller Arbeitsstand</span>
-          <strong>Pakete 1 bis 3 freigegeben</strong>
+          <strong>Pakete 1 bis 4 freigegeben</strong>
         </div>
         <div class="fact">
           <span>Korrekturrunde</span>
-          <strong>Paket 4 in Arbeit</strong>
+          <strong>Paket 5 in Arbeit</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -559,17 +565,34 @@
             aus einer eigenen Logdatei authentifizierbar.
           </p>
         </article>
-        <article class="panel running">
+        <article class="panel good">
           <span class="label">Round 9 · Paket 4</span>
-          <span class="metric">Implementierung läuft</span>
+          <span class="metric">freigegeben · 0/0/0</span>
           <p>
-            Der Abschlussstichtag soll künftig nur noch gelten, wenn exakt zwei
+            Der Abschlussstichtag gilt künftig nur noch, wenn exakt zwei
             verschiedene Prüfer denselben unveränderten Kandidaten frisch mit
             0/0/0 freigeben. Null, eine oder drei Prüfungen, doppelte Prüfer oder
             Dateien, alte Kandidaten und bereits ersetzte Reviews müssen
-            geschlossen abgewiesen werden. Die RED/GREEN-Umsetzung hat begonnen;
-            ein fertiger Paket-4-Commit oder unabhängiges Review liegt noch nicht
-            vor.
+            geschlossen abgewiesen werden. Der unabhängige Review zeigte, dass
+            zwei vollständig passende Reviews zunächst gemeinsam auf einen alten
+            echten Git-Vorfahren umgebunden werden konnten. Der Fix
+            <code>0873c43</code> verlangt jetzt den extern eingefrorenen Kandidaten
+            und den Bericht als echten Blob in genau diesem Commit. Der
+            Nachprüfer bestätigte den Fix-Diff mit 0/0/0.
+          </p>
+        </article>
+        <article class="panel running">
+          <span class="label">Round 9 · Paket 5</span>
+          <span class="metric">Integration und Vollgates laufen</span>
+          <p>
+            Jetzt werden alle vier Pakete auf einem unveränderlichen Kandidaten
+            gemeinsam geprüft. Dazu gehören fokussierte Regressionen,
+            Frozen- und Referenzsperren, Generatoren, Browservertrag, der
+            komplette pytest-Lauf und der vollständige Beweisbuch-Test. Die
+            beiden langen Läufe benötigen erfahrungsgemäß jeweils etwa 90 bis
+            110 Minuten und bekommen diesmal getrennte stdout-/stderr-,
+            Exitcode-, Zeit- und Hash-Artefakte. Erst danach starten zwei neue
+            Schlussprüfer A und B sowie ein zusätzlicher Null-Befund-Durchlauf.
           </p>
         </article>
         <article class="panel good">
@@ -636,11 +659,12 @@
         </article>
       </div>
       <div class="callout warning">
-        <strong>Ehrliche Grenze:</strong> Drei Korrekturpakete sind
-        freigegeben; der versionierte Zwei-Prüfer-Abschlussnachweis ist noch
-        offen. Danach müssen alle formalen Gates, die
-        Vollsuite, Browserprüfungen und zwei frische Gesamtprüfer auf demselben
-        unveränderlichen Kandidaten erneut grün werden. Erst das wäre eine
+        <strong>Ehrliche Grenze:</strong> Vier Korrekturpakete sind
+        task-begrenzt freigegeben; Integration, lange Vollgates,
+        Zwei-Prüfer-Abschlussnachweis und Null-Befund-Durchlauf sind noch offen.
+        Alle formalen Gates, die Vollsuite, Browserprüfungen und zwei frische
+        Gesamtprüfer müssen auf demselben unveränderlichen Kandidaten grün
+        werden. Erst das wäre eine
         Task-4R-Freigabe; eine Freigabe für Merge und Onlinegang ist es noch
         nicht.
       </div>
@@ -839,7 +863,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T12:09:38+02:00">01.08.2026, 12:09 Uhr MESZ</time>.
+      <time datetime="2026-08-01T12:58:55+02:00">01.08.2026, 12:58 Uhr MESZ</time>.
       Frisch belegt aus Git, den getrennten Arbeitszweigen, den abgeschlossenen
       Testprozessen, den unabhängigen Agentenberichten und den lokal
       gespeicherten Rohlogs.
