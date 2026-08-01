@@ -317,7 +317,7 @@
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Runde 7 ist vollständig rot abgeschlossen; Runde 8 läuft.</strong>
+          <strong>Runde 8 ist formal vollständig grün; zwei Blindprüfungen laufen.</strong>
           Auf <code>b35006e</code> waren zehn Abschlussgates grün. Die Vollsuite
           endete jedoch mit 4.354 bestandenen, einem fehlgeschlagenen und zwei
           übersprungenen Tests. Chromium übergab den Browser an einen neuen
@@ -332,9 +332,11 @@
           und zwei übersprungenen Tests; ein zusätzlicher Rechen- oder
           Browserfehler trat nicht auf. Beide roten Runden sind inzwischen
           vollständig committed. Runde 8 läuft neu auf Kandidat
-          <code>93a408e</code>; ihre zehn kurzen Gates und das Beweisbuch sind
-          vollständig grün. Das Beweisbuch bestand 158/158 Prüfungen in
-          4.750,91 Sekunden; nur die Vollsuite läuft noch. Diese Seite ist
+          <code>93a408e</code>; alle zwölf formalen Gates sind nun vollständig
+          grün. Das Beweisbuch bestand 158/158 Prüfungen in 4.750,91 Sekunden,
+          die Vollsuite 4.355 Tests mit zwei planmäßig übersprungenen Prüfungen
+          in 6.324,41 Sekunden. Zwei neue unabhängige Prüfer versuchen jetzt,
+          den Kandidaten gezielt zu widerlegen. Diese Seite ist
           weiterhin ein Zwischenstand und ausdrücklich keine Freigabe.
         </div>
       </div>
@@ -350,7 +352,7 @@
         </div>
         <div class="fact">
           <span>Formale Läufe</span>
-          <strong>Runde 8 · 11/12 Gates grün</strong>
+          <strong>Runde 8 · 12/12 Gates grün</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -497,38 +499,38 @@
     <section id="laeuft">
       <h2>Aktueller Haltepunkt</h2>
       <div class="grid">
-        <article class="panel running">
+        <article class="panel good">
           <span class="label">Formale Kandidatengates</span>
-          <span class="metric">Runde 8 · 11/12 Gates grün</span>
+          <span class="metric">Runde 8 · 12/12 Gates grün</span>
           <p>
             Die kurze Spur ist vollständig grün: Browservertrag 18/18,
             Fokusprüfung 513/513, 22 Referenzfälle, Domain-, Legacy- und
             Zeitgenerator, Frozen-Sperren, Kompilierung, exakter Diff und
             Sauberkeitsstatus. Das Beweisbuch bestand zusätzlich 158/158
-            Prüfungen in 4.750,91 Sekunden. Alle elf Ergebnisse wurden nochmals
-            gegen Commit, Baum, Befehls-Hash und vorab versiegelte Erwartung
-            geprüft. Nur die Vollsuite läuft in ihrem getrennten Worktree weiter;
-            ein Timeout oder Teilresultat zählt nicht als Erfolg.
+            Prüfungen in 4.750,91 Sekunden. Die vollständige Suite bestand
+            4.355 Tests, übersprang zwei planmäßig und benötigte 6.324,41
+            Sekunden. Alle zwölf Ergebnisse wurden gegen Commit, Baum,
+            Befehls-Hash und vorab versiegelte Erwartung geprüft.
           </p>
         </article>
         <article class="panel running">
           <span class="label">Gesamtprüfung A</span>
-          <span class="metric">frischer Start folgt</span>
+          <span class="metric">Prüfer A läuft</span>
           <p>
-            Der frühere Prüfer A meldete auf <code>68b9a6f</code> zwar
-            <code>0/0/0</code>. Weil Kandidat und Gatevertrag danach geändert
-            wurden, zählt dies nicht als Abschluss für <code>93a408e</code>.
-            Nach den formalen Gates startet ein neuer Prüfer von vorn.
+            Der neue Prüfer <code>019fbb2c…8eb6</code> arbeitet in einer eigenen
+            sauberen Kandidatenkopie. Er greift Wasser-, Stoff-, Schlamm-, Gas-
+            und Energiebilanzen, Owner-Zuordnung, Mehrfachbuchungen und
+            Quellenherkunft unabhängig von früheren Berichten an.
           </p>
         </article>
         <article class="panel running">
           <span class="label">Gesamtprüfung B</span>
-          <span class="metric">Befund geschlossen</span>
+          <span class="metric">Prüfer B läuft</span>
           <p>
-            Prüfer B fand den Checklisten-Widerspruch und meldete korrekt
-            <code>0/0/1</code>. Der Befund erhielt einen roten Test, wurde
-            korrigiert und mit 26 relevanten grünen Tests bestätigt. Auch hier
-            ist anschließend eine vollständig neue Prüfung vorgeschrieben.
+            Der neue Prüfer <code>019fbb2c…b152</code> untersucht unabhängig
+            Einheiten, Zeitintervalle, Snapshot-/Horizonttrennung, Frozen-
+            Generatoren, Beweisbuch, Testorakel und Browserverträge. Er kennt
+            die alten Reviewberichte ausdrücklich nicht.
           </p>
         </article>
         <article class="panel info">
@@ -683,13 +685,9 @@
       <h2>Die nächsten Schritte bis zum Ziel</h2>
       <ol class="checklist">
         <li>
-          Die noch laufende Vollsuite auf <code>93a408e</code> vollständig
-          beenden und ihr Ergebnis gegen die vorab versiegelte Erwartung prüfen.
-        </li>
-        <li>
-          Zwei neue unabhängige Gesamtprüfungen vollständig von vorn starten.
-          Frühere Prüfergebnisse werden nicht als Bestätigung des neuen
-          Kandidaten wiederverwendet.
+          Die zwei laufenden unabhängigen Gesamtprüfungen vollständig beenden.
+          Frühere Prüfergebnisse werden nicht als Bestätigung des Kandidaten
+          wiederverwendet.
         </li>
         <li>
           Jeden neuen reproduzierbaren Befund mit eigener ID, rotem
@@ -763,7 +761,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T04:07:00+02:00">01.08.2026, 04:07 Uhr MESZ</time>.
+      <time datetime="2026-08-01T04:34:00+02:00">01.08.2026, 04:34 Uhr MESZ</time>.
       Frisch belegt aus Git, drei sauberen abgetrennten Kandidaten-Worktrees,
       den laufenden Prozesszuständen und den lokal gespeicherten Rohlogs.
       Laufende Tests werden nicht vorzeitig als bestanden bezeichnet. Diese
