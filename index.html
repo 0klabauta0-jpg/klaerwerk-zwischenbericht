@@ -317,7 +317,7 @@
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Runde 6 fand einen echten Windows-Browserfehler; Runde 7 läuft.</strong>
+          <strong>Runde 7 ist vollständig rot abgeschlossen; Runde 8 läuft.</strong>
           Auf <code>b35006e</code> waren zehn Abschlussgates grün. Die Vollsuite
           endete jedoch mit 4.354 bestandenen, einem fehlgeschlagenen und zwei
           übersprungenen Tests. Chromium übergab den Browser an einen neuen
@@ -327,9 +327,12 @@
           sind vollständig grün. Das Beweisbuch endete jedoch mit 157
           bestandenen und einer fehlgeschlagenen Prüfung, weil die bereits
           erstellte Abschlussakte der gescheiterten Runde 6 noch nicht im
-          sauberen Prüf-Commit enthalten war. Die Vollsuite läuft weiter; danach
-          wird die Nachweiskette committed und Runde 8 vollständig neu
-          vorgebunden. Diese Seite ist weiterhin ein Zwischenstand und
+          sauberen Prüf-Commit enthalten war. Der Runde-7-Volltest bestätigte
+          dieselbe einzelne Lücke mit 4.354 bestandenen, einem fehlgeschlagenen
+          und zwei übersprungenen Tests; ein zusätzlicher Rechen- oder
+          Browserfehler trat nicht auf. Beide roten Runden sind inzwischen
+          vollständig committed. Runde 8 läuft neu auf Kandidat
+          <code>93a408e</code>. Diese Seite ist weiterhin ein Zwischenstand und
           ausdrücklich keine Freigabe.
         </div>
       </div>
@@ -337,15 +340,15 @@
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>codex/strangler-bilanzen · 852a914</strong>
+          <strong>codex/strangler-bilanzen · 702565f</strong>
         </div>
         <div class="fact">
           <span>Geprüfter Kandidat</span>
-          <strong>72b71d9</strong>
+          <strong>93a408e</strong>
         </div>
         <div class="fact">
           <span>Formale Läufe</span>
-          <strong>Runde 7 · 10 grün, 1 rot, 1 läuft</strong>
+          <strong>Runde 8 · drei Spuren laufen</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -454,8 +457,8 @@
           <span class="metric">bytegenau</span>
           <p>
             Drei abgetrennte Prüf-Worktrees stehen sauber auf
-            <code>72b71d9</code> und dem Baum
-            <code>e2b65e6fba45</code>. Damit beziehen sich Vollsuite, Beweisbuch
+            <code>93a408e</code> und dem Baum
+            <code>b8bfc5367066</code>. Damit beziehen sich Vollsuite, Beweisbuch
             und Fokusprüfung auf exakt dieselben Programmdateien.
           </p>
         </article>
@@ -481,8 +484,11 @@
         Task-6-Abschnitt mit gezielten Mutationstests. Runde 6 bestätigte danach
         Fokusprüfung, Ledger, Referenzen, Generatoren, Sperren, Kompilierung,
         Diff und Sauberkeit. Nur die Vollsuite blieb wegen des Browserstarters
-        rot. Commit <code>852a914</code> enthält zwölf vorab festgelegte
-        Erwartungen für die jetzigen Läufe auf <code>72b71d9</code>.
+        rot. Commit <code>852a914</code> enthält die zwölf vorab festgelegten
+        Erwartungen dieser inzwischen vollständig abgeschlossenen Runde.
+        Die beiden Abschlussakten liegen in <code>76694f2</code> und
+        <code>93a408e</code>; Commit <code>702565f</code> bindet vor dem Start
+        die zwölf neuen Erwartungen für Runde 8 an exakt <code>93a408e</code>.
       </div>
     </section>
 
@@ -491,17 +497,14 @@
       <div class="grid">
         <article class="panel running">
           <span class="label">Formale Kandidatengates</span>
-          <span class="metric">10 grün · 1 rot · 1 läuft</span>
+          <span class="metric">Runde 8 · drei Spuren laufen</span>
           <p>
-            Die kurze Spur ist vollständig beendet: Browservertrag 18/18,
-            Fokusprüfung 513/513 sowie Referenzen, drei Generatoren,
-            Frozen-Sperren, Kompilierung, exakter Git-Diff und Sauberkeitsstatus
-            sind grün. Der Ledger-Lauf endete nach 40 Minuten mit 157/158
-            bestandenen Prüfungen. Seine eine rote Prüfung weist korrekt nach,
-            dass die Abschlussakte für Runde 6 zwar lokal erstellt, aber im
-            abgetrennten Kandidaten noch nicht committed war. Der Volltest läuft
-            weiterhin in einem getrennten Worktree. Ein Timeout oder
-            Teilresultat wird nicht als bestanden gewertet.
+            Vollsuite, Ledger und die kombinierte Browser-/Fokus-/Generator-Spur
+            starteten um 02:46 Uhr in drei getrennten, sauberen Worktrees. Alle
+            stehen auf <code>93a408e/b8bfc5367066</code>, besitzen ihre
+            Abhängigkeiten und meldeten beim Start keine Runnerfehler. Noch ist
+            keiner dieser Läufe als bestanden gewertet; ein Timeout oder
+            Teilresultat zählt nicht als Erfolg.
           </p>
         </article>
         <article class="panel running">
@@ -510,7 +513,7 @@
           <p>
             Der frühere Prüfer A meldete auf <code>68b9a6f</code> zwar
             <code>0/0/0</code>. Weil Kandidat und Gatevertrag danach geändert
-            wurden, zählt dies nicht als Abschluss für <code>72b71d9</code>.
+            wurden, zählt dies nicht als Abschluss für <code>93a408e</code>.
             Nach den formalen Gates startet ein neuer Prüfer von vorn.
           </p>
         </article>
@@ -528,10 +531,11 @@
           <span class="label">Sicherer Wiederanlaufpunkt</span>
           <span class="metric">vollständig gespeichert</span>
           <p>
-            Fixcommit <code>72b71d9</code>, Erwartungscommit
-            <code>852a914</code>, drei saubere Kandidaten-Worktrees und getrennte
-            Rohlogpfade liegen auf der Festplatte. Hauptzweig, Firebase und
-            Vercel wurden weiterhin nicht verändert.
+            Browserfix <code>72b71d9</code>, beide Abschlussakten
+            <code>76694f2/93a408e</code>, Erwartungscommit <code>702565f</code>,
+            drei saubere Kandidaten-Worktrees und getrennte Rohlogpfade liegen
+            auf der Festplatte. Hauptzweig, Firebase und Vercel wurden weiterhin
+            nicht verändert.
           </p>
         </article>
         <article class="panel info">
@@ -552,10 +556,10 @@
         <strong>Ehrliche Grenze:</strong> Runde 6 ist wegen eines Fehlers in der
         Vollsuite nicht freigegeben. Runde 7 hat den Browserfix in zehn Gates
         bestätigt, aber zugleich eine formale Lücke in der Nachweiskette
-        offengelegt. Darum kann auch <code>72b71d9</code> nicht freigegeben
-        werden. Nach Ende des laufenden Volltests werden beide gescheiterten
-        Runden vollständig abgeschlossen und eine frische Runde 8 gestartet.
-        Die unabhängige Null-Befund-Schleife bleibt danach weiterhin offen.
+        offengelegt. Darum wurde auch <code>72b71d9</code> nicht freigegeben.
+        Die Ursache ist jetzt committed, und Runde 8 prüft den daraus
+        entstandenen Kandidaten vollständig neu. Die unabhängige
+        Null-Befund-Schleife bleibt danach weiterhin offen.
       </div>
     </section>
 
@@ -675,7 +679,7 @@
       <h2>Die nächsten Schritte bis zum Ziel</h2>
       <ol class="checklist">
         <li>
-          Die drei laufenden formalen Prüfpfade auf <code>72b71d9</code>
+          Die drei laufenden formalen Prüfpfade auf <code>93a408e</code>
           vollständig beenden und sämtliche Ergebnisse gegen die vorab
           versiegelten Erwartungen prüfen.
         </li>
@@ -756,7 +760,7 @@
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T02:18:00+02:00">01.08.2026, 02:18 Uhr MESZ</time>.
+      <time datetime="2026-08-01T02:49:00+02:00">01.08.2026, 02:49 Uhr MESZ</time>.
       Frisch belegt aus Git, drei sauberen abgetrennten Kandidaten-Worktrees,
       den laufenden Prozesszuständen und den lokal gespeicherten Rohlogs.
       Laufende Tests werden nicht vorzeitig als bestanden bezeichnet. Diese
