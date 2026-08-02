@@ -317,52 +317,35 @@
       <div class="status-banner">
         <span class="status-dot" aria-hidden="true"></span>
         <div>
-          <strong>Pakete 1 bis 4 sind unabhängig freigegeben; Paket 5 läuft.</strong>
-          Runde 8 bestand zwar alle zwölf Maschinengates, fiel aber mit
-          <strong>2 kritischen und 5 wichtigen Befunden</strong> durch zwei
-          Blindprüfungen. Dieser Fehlschlag ist jetzt unverändert in
-          <code>bcad04a</code> dokumentiert; der frisch wiederholte Ledger-Test
-          bestand 158/158 Prüfungen in 1:36:05. Paket 1 schließt die fälschbare
-          Herkunft von Wasser-, Gas- und Energiequellen sowie unvollständige
-          Gaszusammensetzungsregeln. Nach einem ersten Reviewbefund wurden die
-          fehlenden Gegenbeispiele ergänzt. Der unabhängige Nachprüfer gab den
-          endgültigen Diff mit <strong>0 kritisch / 0 wichtig / 0 klein</strong>
-          frei. Paket 2 bindet nun alle elf Authority-Felder mit einer
-          Ed25519-Signatur und vergleicht jede Wasser-, Schlamm-, Gas- und
-          Dispositionsprojektion mit der echten Quelle. Zwei unabhängige
-          Nachbesserungen schlossen einen erreichbaren Signierer, den
-          Prozesswechsel und eine falsche Produktionsabhängigkeit. Der
-          endgültige Paket-2-Diff <code>ba02b24</code> wurde mit
-          <strong>0 kritisch / 0 wichtig / 0 klein</strong> freigegeben.
-          Paket 3 ersetzt freie Laufbehauptungen durch gehashte
-          Beobachtungsmanifeste und maschinenlesbare Entscheidungen. Nach einer
-          Korrekturrunde wurden alle vier wichtigen und der kleinere
-          Reviewbefund geschlossen; der Fix-Diff erhielt
-          <strong>0 kritisch / 0 wichtig / 0 klein</strong>. Paket 4 baut den
-          Abschlussvertrag, der exakt zwei frische unabhängige
-          Null-Befund-Reviews desselben Kandidaten verlangt. Sein erster Review
-          fand noch eine gemeinsam umbindbare Alt-Kandidatenkette. Der Fix
-          verankert den erwarteten Kandidaten nun von außen und verlangt den
-          Bericht bereits als Datei in genau diesem Commit; der scoped
-          Nachreview meldete <strong>0/0/0</strong>. Paket 5 friert jetzt den
-          Gesamtkandidaten ein und führt kurze sowie mehrstündige Gates mit
-          eigenen Rohlogs aus. Diese Seite bleibt ausdrücklich keine
-          Gesamtfreigabe.
+          <strong>Paket 5 hat einen grünen Volltest; eine letzte gebündelte
+          Fachkorrektur läuft.</strong> Der exakt versiegelte Kandidat
+          <code>c2cc2b8</code> bestand am 2. August
+          <strong>4576 Tests, 2 planmäßige Skips und 0 Fehler</strong> in
+          2:00:37. Vor- und Nachzustand, Runner, Rohlogs und Hashes stimmen.
+          Zwei anschließend bewusst eng geführte Prüfer fanden trotzdem reale
+          Randfehler in den neuen, noch nicht live leitenden Bilanzverträgen:
+          einen kritischen Gasstatusfehler, vier wichtige Punkte zu Gas,
+          Energie, Residuen und Nullwerten sowie zwei kleine Identitätskanten.
+          Deshalb wird jetzt genau eine gemeinsame RED/GREEN-Fixwelle gebaut.
+          Der alte sichtbare Rechenpfad bleibt unverändert. Nichtkritische
+          Restpunkte werden dokumentiert und lösen keine neue mehrstündige
+          Endlosschleife aus. Diese Seite ist noch keine Gesamtfreigabe, zeigt
+          aber den verkürzten, konkreten Weg zum Livegang.
         </div>
       </div>
 
       <div class="facts" aria-label="Aktuelle Eckdaten">
         <div class="fact">
           <span>Arbeitszweig</span>
-          <strong>Kandidat ddeb613 · Erwartung 4083811</strong>
+          <strong>Kandidat c2cc2b8 · Vollsuite grün</strong>
         </div>
         <div class="fact">
           <span>Aktueller Arbeitsstand</span>
-          <strong>Pakete 1 bis 4 freigegeben</strong>
+          <strong>Pakete 1 bis 4 frei · Paket 5 Schlussfix</strong>
         </div>
         <div class="fact">
           <span>Korrekturrunde</span>
-          <strong>Task-Review rot · 1 wichtig / 1 klein</strong>
+          <strong>1 gebündelte Fachfixwelle läuft</strong>
         </div>
         <div class="fact">
           <span>Live-App verändert</span>
@@ -583,34 +566,25 @@
         </article>
         <article class="panel running">
           <span class="label">Round 9 · Paket 5</span>
-          <span class="metric">Integration und Vollgates laufen</span>
+          <span class="metric">Vollsuite grün · Fachfix läuft</span>
           <p>
-            Jetzt werden alle vier Pakete auf einem unveränderlichen Kandidaten
-            gemeinsam geprüft. Dazu gehören fokussierte Regressionen,
-            Frozen- und Referenzsperren, Generatoren, Browservertrag, der
-            komplette pytest-Lauf und der vollständige Beweisbuch-Test. Die
-            beiden langen Läufe benötigen erfahrungsgemäß jeweils etwa 90 bis
-            110 Minuten. Der erste Integrationskandidat <code>f3ca35e</code>
-            scheiterte nach 2:03:16 an zwei echten Integrationsfehlern. Beide
-            Ursachen wurden fokussiert behoben und die rote Observation bleibt
-            separat erhalten. Der neue Kandidat <code>ddeb613</code> und sein
-            Baum wurden im Erwartungscommit <code>4083811</code> versiegelt.
-            Seine vollständige Suite bestand
-            <strong>4546 Tests, 2 planmäßige Skips, 0 Fehler</strong> in 2:28:11;
-            getrennte Rohlogs, Exitcode 0 und Hashmetadaten sind vorhanden. Der
-            Ledger-/Hardening-/Abschlussgate bestand anschließend
-            <strong>196/196</strong> in 1:52:40. Der unabhängige Task-Review gab
-            Paket 5 trotzdem nicht frei: Die Erwartung bindet noch nicht die
-            tatsächlich ausgeführten Live-Runnerbytes, und ein Nachcheck des
-            Kandidatenzustands fehlt. Zusätzlich ist ein Typimport
-            (<code>Mapping</code>) unvollständig. Korrekturrunde 1 baut deshalb
-            einen vorab versiegelten Runner, Vor-/Nach-/In-Run-Schutz und einen
-            Post-Append-Ledgeraudit. Danach müssen alle Gates auf einem neuen
-            Kandidaten vollständig neu laufen. Ein erster
-            Lauf ab 13:32 Uhr wurde nach wenigen Minuten beendet und ausdrücklich
-            nicht gewertet, weil ihm diese Rohartefakte fehlten. Erst nach den
-            vollständigen Gates starten zwei neue Schlussprüfer A und B sowie
-            ein zusätzlicher Null-Befund-Durchlauf.
+            Die frühere Integrationsrunde auf <code>ddeb613</code> war
+            maschinell grün, hatte aber noch Lücken in der Bindung des
+            tatsächlich ausgeführten Runners. Diese Lücken wurden geschlossen.
+            Der neue Kandidat <code>c2cc2b8</code> lief in einem geschützten
+            Arbeitsbaum mit vorab versiegeltem Runner und unverändertem
+            Vor-/Nachzustand. Ergebnis:
+            <strong>4576/4576 bestanden, 2 planmäßige Skips, 0 Fehler</strong>.
+            Ein zweiter mehrstündiger Ledgerlauf wurde danach bewusst nicht mehr
+            auf diesem Stand gestartet, weil zwei frische Fachprüfer neue
+            Randfälle reproduzierten. Der schwerste Fall erlaubte bei
+            Gesamtgas null oder „nicht anwendbar“ trotzdem unbekanntes oder
+            positives Methan. Weitere Punkte betreffen doppelte Energietermen,
+            intervallabhängige Gastoleranzen, ein frei fälschbares Residuum und
+            mathematisch bereits feststehende Null-Untergrößen. Diese Punkte
+            werden jetzt zusammen mit gezielten Gegenbeispielen behoben. Danach
+            folgen nur fokussierte Pakettests, ein enger Nachreview und die
+            Release-Smokes; keine erneute Vier-Stunden-Schleife.
           </p>
         </article>
         <article class="panel good">
@@ -815,73 +789,62 @@
           Abhängigkeitsgrenze sind unabhängig mit 0/0/0 freigegeben.
         </li>
         <li>
-          <strong>Läuft:</strong> Freie Laufbehauptungen durch gehashte
-          Beobachtungsmanifeste ersetzen. Danach wird der Berichtsschnitt nur
-          noch mit exakt zwei frischen unabhängigen 0/0/0-Prüfungen zugelassen.
+          <strong>Erledigt:</strong> Runner, Kandidat, Git-Baum, Rohlogs und
+          Hashes sind vor und nach dem Lauf gebunden. Die vollständige Suite auf
+          <code>c2cc2b8</code> ist mit 4576 bestandenen Tests grün.
         </li>
         <li>
-          Zuerst rote Berichtstests schreiben, dann den großen deutschen
-          HTML-Abschlussbericht erzeugen. Der Bericht erhält eine einfache
-          Erklärung und eine technische Nachweisebene.
+          <strong>Läuft:</strong> Eine einzige Sammelkorrektur schließt die
+          unabhängig reproduzierten Gas-, Energie-, Residuen- und Nullwertfälle.
+          Jeder bestätigte Fehler erhält zuerst einen roten Gegenbeispieltest.
         </li>
         <li>
-          Die exakten Berichtbytes offline über <code>file://</code> auf
-          Desktop und 360-Pixel-Mobil prüfen: Suche, Filter, Sprungziele,
-          Tastatur, Aufklapper, Überlauf und Browserkonsole.
+          Danach laufen die betroffenen Regressionen, der fokussierte
+          Paketcheck und ein enger Nachreview. Kleine Restpunkte werden mit
+          Auswirkung und Risiko dokumentiert, statt den Release erneut um Tage
+          zu verschieben.
         </li>
         <li>
-          Einen dritten unabhängigen Berichtsprüfer und danach nochmals die
-          vollständigen Post-Report-Gates ausführen.
+          Den alten <code>main</code>-Stand als dauerhafte Backup-Marke sichern,
+          den geprüften Stand lokal zusammenführen und Build-SHA, API,
+          Detailkarten, Zeitpfad und Mobilansicht mit Release-Smokes prüfen.
         </li>
         <li>
-          Paket 01 Task 5 umsetzen: Gas und Energie als typisierte Projektionen
-          anbinden, die vorläufigen <code>unbalanced_*</code>-Ausnahmen entfernen
-          und alle Gasports, CH4, CO2, Strom, Wärme und Verluste prüfen.
+          <code>main</code> pushen, Firebase Hosting und die Vercel-API
+          veröffentlichen und die ausgelieferten Dateien sowie den echten
+          Live-Build-SHA gegen den lokalen Stand vergleichen.
         </li>
         <li>
-          Paket 01 Task 6 umsetzen: fertige Einzelbilanzen ohne künstlichen
-          Gesamtstatus zum Anlagenbericht aggregieren und alle sechs
-          Pflichtfälle gegen das unabhängige Legacy-Orakel vergleichen.
+          Den großen deutschen HTML-Abschlussbericht für Nicht-Programmierer
+          und Fachleser erstellen, offline sowie mobil prüfen und auf der
+          Firebase-Seite erreichbar machen.
         </li>
         <li>
-          Paket 01 Task 7 abschließen: Paketabnahme, unabhängige Paketreview,
-          vollständige Tests und den eigentlichen Gesamt-Abschlussbericht für
-          Nicht-Programmierer und Fachleser erzeugen.
-        </li>
-        <li>
-          Den alten <code>main</code>-Stand sichern, lokal zusammenführen und
-          die zusammengeführte App einschließlich Detailkarten, Zeitkarten,
-          API und Mobilansicht erneut prüfen.
-        </li>
-        <li>
-          Erst danach pushen, Firebase und Vercel bereitstellen und lokale
-          gegen ausgelieferte Bytes vergleichen. Anschließend folgt die
-          getrennte Performance-Runde.
+          Nach dem Livegang folgt die separat gewünschte Performance-Runde,
+          ohne Tests zu löschen oder ihre Aussagekraft zu schwächen.
         </li>
       </ol>
 
       <div class="callout warning">
-        <strong>Wann sind wir am Ziel?</strong> Im fundfreien Fall sind noch
-        mehrere Prüf-, Implementierungs-, Berichts-, Merge- und Live-Blöcke
-        nötig. Schon ein einzelner Volltest benötigte zuletzt rund 109 Minuten;
-        deshalb sind weitere Stunden bis mehrere Arbeitsetappen realistisch,
-        nicht Minuten. Ein seriöser Fertigtermin ist erst nach den beiden
-        Task-4R-Gesamtprüfungen und der ersten Aufwandssichtung für Task 5
-        möglich. Jeder neue reproduzierbare Befund verlängert die Arbeit bewusst.
+        <strong>Wann sind wir am Ziel?</strong> Es fehlt keine weitere große
+        Architekturbaustelle vor diesem Release. Offen sind die laufende
+        Sammelkorrektur, ihr fokussierter Nachweis, Backup und Merge,
+        Release-Smokes, Deployment und Abschlussbericht. Wenn dabei kein neuer
+        kritischer App- oder Fachfehler auftritt, ist das eine zusammenhängende
+        Abschlussfolge und keine weitere mehrwöchige Reviewrunde.
       </div>
       <div class="callout">
-        <strong>Das technische Ziel ist erreicht, wenn:</strong> zwei frische
-        Task-4R-Gesamtprüfer 0/0/0 melden, die Paket-01-Tasks 5 bis 7 mit ihren
-        eigenen Reviews abgeschlossen sind, der Gesamt-Abschlussbericht
-        vollständig und browsergeprüft ist, der lokale Merge seine vollständigen
-        Tests besteht und lokale sowie ausgelieferte Dateien nach Push und
-        Deployment übereinstimmen.
+        <strong>Das technische Ziel ist erreicht, wenn:</strong> der kritische
+        Gasstatus und die gebündelten Fachpunkte gezielt grün sind, der
+        zusammengeführte Stand seine Release-Smokes besteht, Backup und
+        Rückweg dokumentiert sind, Firebase und Vercel den erwarteten Commit
+        ausliefern und der Abschlussbericht auf Handy und Desktop funktioniert.
       </div>
     </section>
 
     <footer>
       <strong>Stand:</strong>
-      <time datetime="2026-08-01T21:21:17+02:00">01.08.2026, 21:21 Uhr MESZ</time>.
+      <time datetime="2026-08-02T08:31:09+02:00">02.08.2026, 08:31 Uhr MESZ</time>.
       Frisch belegt aus Git, den getrennten Arbeitszweigen, den abgeschlossenen
       Testprozessen, den unabhängigen Agentenberichten und den lokal
       gespeicherten Rohlogs.
